@@ -8,7 +8,7 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 	$scope.briSliderOptions = {
 		    floor: 0,
 		    ceil: 254,
-		    vertical: true
+		    vertical: false
 		};
 
 	$scope.init = function() {
@@ -30,7 +30,8 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 			{
 				var t = response.data[lightNr];
 				t.options = angular.copy($scope.briSliderOptions);
-				t.options.id = $scope.lights.length;
+				t.options.id = lightNr;
+				t.id = lightNr;
 				t.options.onChange = $scope.handleChange;
 			  $scope.lights.push(t);
 			};
@@ -41,16 +42,69 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 		});
 	};
 	
-	$scope.handleChange = function(e)
+	$scope.getLightById = function(id)
 	{
-		console.log($scope.lights[e]);
+		id = ''+id;
+		for(var i=0,j=$scope.lights.length; i<j; i++){
+		  if ($scope.lights[i].id == id) return $scope.lights[i];
+		  
+		};
+	};
+	
+	$scope.switchLight = function(id, what)
+	{
 		
+		  var theLight = $scope.getLightById(id);
+		  console.log(theLight);
+		  $http({
+			method : 'PUT',
+			url : $scope.url+'lights/'+theLight.id+'/state',
+			data : {"on": what}
+		});
+	};
+	$scope.switchAllLights = function(what)
+	{
+		
+		for (var i=0; i < $scope.lights.length; i++) {
+		  var theLight = $scope.lights[i];
+		  console.log(theLight);
+		  $http({
+			method : 'PUT',
+			url : $scope.url+'lights/'+theLight.id+'/state',
+			data : {"on": what}
+		});
+		};
+	};
+	
+	$scope.handleChange = function(id)
+	{
+		// console.log('id', id);
+		var theLight = $scope.getLightById(id);
+		if (theLight.busy) return;
+		
+		theLight.busy = true;
 		$http({
 			method : 'PUT',
-			url : $scope.url+'lights/'+(e+1)+'/state',
-			data : {"on": true, "bri":$scope.lights[e].state.bri}
+			url : $scope.url+'lights/'+theLight.id+'/state',
+			data : {"on": true, "bri":theLight.state.bri}
 		}).then(function successCallback(response) {
-			console.log(response.data);
+			// console.log(response.data);
+			for (i in response.data)
+			{
+				if(response.data[i].success)
+				{
+					for (str in response.data[i].success)
+					{
+						
+						// console.log(str);
+						var id = str.replace(/[^0-9\.]/g, '');
+						// console.log('resp id', id);
+						var theLight = $scope.getLightById(id);
+						theLight.busy = false;
+					}
+					
+				}
+			}
 			
 		}, function errorCallback(response) {
 			console.log(response.status);

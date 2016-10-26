@@ -1,0 +1,18 @@
+.rzslider .rz-pointer:after { 
+	width: 28px;
+    height: 28px;
+    border-radius: 14px;
+}
+
+.rzslider .rz-pointer {
+	width: 52px;
+	height: 52px;
+	border-radius: 26px;
+}
+
+.rzslider .rz-bar-wrapper {
+	padding-top: 26px;
+}
+.rzslider {
+	margin-top: 65px;
+}

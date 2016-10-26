@@ -7,7 +7,7 @@ body, html {
 	font-size: 15pt;
 	font-weight: 300;
 	overflow: hidden;
-	background-color: rgb(50,50,50);
+	/*background-color: rgb(50,50,50);*/
 }
 
 .clearfix:after {
@@ -22,164 +22,49 @@ body, html {
 	padding: 0;
 }
 
-div#left {
+div#sliders {
+	margin: 15px;
+}
+
+button {
+    background-color: #323232;
+    border: none;
+    color: white;
+    padding: 20px 48px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+button.on {
+	background-color: #4CAF50;
+}
+button.off {
+	background-color: #f44336;
+}
+
+div.sliderItem {
+	clear:both;
+}
+div.sliderItem div {
 	float: left;
+}
+div.sliderItem button {
+	padding: 5px 5px;
+	width: 52px;
+	height: 53px;
+	margin-top: 46px;
+}
+div.sliderItem button.on {
+	margin-left: 10px;
+}
+
+div.sliderItem div.slider {
 	width: 80%;
-	/*border: 1px solid red;*/
+}
+div.sliderItem div.sliderButton {
+	width: 10%;
 }
 
-div#right {
-	width: 20%;
-	float: right;
-	position: absolute;
-	right: 0;
-	height: 100%;
-	
-}
-div#music {
-	position: absolute;
-	width: 100%;
-	bottom:0;
-	background-color: rgba(0,0,0,0.5);
-}
-
-
-div#music img{
-	width: 100%;
-	height: auto;
-}
-
-div#music .artwork {
-	position: relative;
-}
-
-div#music .description {
-	position: relative;
-	bottom: 0;
-	margin: 4px;
-}
-
-
-div#music .artist {
-	font-size: 0.5em;
-	
-}
-div#music .title {
-	font-size: 1em;
-	font-weight: 700;
-}
-div#music .album {
-	font-size: 0.7em;
-}
-
-
-.rightcontainer {
-	
-	padding-left: 4px;
-}
-div#time {
-	font-weight: 600;
-	font-size: 2.5em;
-	width: 100%;
-	text-align: center;
-	background-color: rgba(0,0,0,0.5);
-	border: none;
-}
-
-
-
-div#flickr {
-	text-align: center;
-}	
-div#flickr img {
-	max-width: 100%;
-	max-height: 600px;
-	height: inherit !important;
-}
-
-div#adafruit {
-	background-color: rgba(0,0,0,0.5);
-	margin-top: 5px;
-	font-size: 2em;
-	text-align: center;
-}
-div#netatmo {
-	background-color: rgba(0,0,0,0.5);
-	margin-top: 5px;
-	padding-left: 10px;
-	font-size: 2em;
-	text-align: left;
-}
-
-
-
-
-
-div#netatmo div.tempContainer {
-}
-
-div#netatmo div.tempContainer div:first-child
-{
-	float: left;
-	margin-right: 25px;
-}
-
-
-
-div#netatmo div.tempContainer div:not(:first-child)
-{
-	padding-top: 2px;
-	font-size: 0.4em;
-}
-div#netatmo div.co2{
-	border-bottom: 1px solid white;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-}
-
-div#netatmo div.humidity,
-div#netatmo div.pressure, 
-div#netatmo div.co2{
-	font-size: 0.8em
-}
-div#netatmo div.humidity {
-	float: left;
-	clear: both;
-}
-div#netatmo div.pressure {
-	float: right;
-}
-
-div#netatmo div.temp::after,
-div#netatmo div.co2::after,
-div#netatmo div.pressure::after,
-div#netatmo div.humidity::after
-{
-	color: rgb(150,150,150);
-	font-size: 0.5em;
-	vertical-align: top;
-	margin-left: 5px;
-}
-
-div#netatmo div.temp::after{
-	content:"°";
-	font-size: 0.7em;
-}
-div#netatmo div.co2::after{
-	content:"ppm";
-}
-div#netatmo div.pressure::after{
-	content:"mbar";
-}
-div#netatmo div.humidity::after{
-	content:"%";
-}
-
-@media (max-width: 1000px) {
-	div#netatmo {
-		font-size: 1.7em;
-	}
-	div#netatmo div.humidity, div#netatmo div.pressure, div#netatmo div.co2 {
-		font-size: 0.7em
-	}
-}

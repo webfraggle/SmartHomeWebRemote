@@ -3,10 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>HUE Display</title>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/app.css">
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'> -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.css">
+		<link rel="stylesheet" href="css/app.css">
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
+		<link rel="stylesheet" href="css/overwrites.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
 		<script src="vendor/rzslider/rzslider.js"></script>
@@ -18,17 +19,24 @@
 		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		<div id="left">
-			<div id="hue" ng-controller="HueCtrl">
+	<div id="hue" ng-controller="HueCtrl">
+		<div id="buttons">
+			<button ng-click="switchAllLights(false)" class="off">All off</button>
+			<button ng-click="switchAllLights(true)" class="on">All on</button>
+		</div>
+		<div id="sliders">
 				
-				<div ng-repeat="light in lights" style="float: left; height: 600px; padding-right: 35px;">
+				<div ng-repeat="light in lights" class="sliderItem clearfix">
+					<div class="sliderButton"><button class="off" ng-click="switchLight(light.id, false)">off</button></div>
+					<div class="slider">
 					<rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options" ></rzslider>
-					
+					</div>
+					<div class="sliderButton"><button class="on" ng-click="switchLight(light.id, true)">on</button></div>
 				</div>
 				
 				
-			</div>
 		</div>
+	</div>
 
 		
 	</body>
