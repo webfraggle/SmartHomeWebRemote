@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.css">
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
+		<script src="vendor/rzslider/rzslider.js"></script>
 		
 		<script src="js/app.js"></script>
 		<script src="js/hue.controller.js"></script>
@@ -19,8 +20,13 @@
 	<body>
 		<div id="left">
 			<div id="hue" ng-controller="HueCtrl">
-				{{test}} {{counter}}
-				<rzslider rz-slider-model="brightness"></rzslider>
+				
+				<div ng-repeat="light in lights" style="float: left; height: 600px; padding-right: 35px;">
+					<rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options" ></rzslider>
+					
+				</div>
+				
+				
 			</div>
 		</div>
 
