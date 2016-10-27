@@ -48,6 +48,9 @@ button.off {
 div.sliderItem {
 	clear:both;
 }
+div.sliderItem div.sliderName {
+	width: 100%;
+}
 div.sliderItem div {
 	float: left;
 }

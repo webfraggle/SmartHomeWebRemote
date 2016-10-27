@@ -24,18 +24,28 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 			method : 'GET',
 			url : $scope.url+'lights'
 		}).then(function successCallback(response) {
-			console.log(response.data);
+			//console.log(response.data);
 			// for (var i=0; i < response.data.length; i++) {
 			for (var lightNr in response.data)
 			{
+				var light = $scope.getLightById(lightNr);
 				var t = response.data[lightNr];
-				t.options = angular.copy($scope.briSliderOptions);
-				t.options.id = lightNr;
-				t.id = lightNr;
-				t.options.onChange = $scope.handleChange;
-			  $scope.lights.push(t);
+				//console.log(light);
+				if (!light)
+				{
+					
+				
+					t.options = angular.copy($scope.briSliderOptions);
+					t.options.id = lightNr;
+					t.id = lightNr;
+					t.options.onChange = $scope.handleChange;
+					$scope.lights.push(t);
+				} else {
+					light.state = angular.copy(t.state);
+				}
+				
 			};
-			console.log($scope.lights);
+			//console.log($scope.lights);
 		}, function errorCallback(response) {
 			console.log(response.status);
 			
@@ -126,8 +136,8 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 	//$scope.update = 
 	
 	$scope.refresh = function()
-
 	{
+		$scope.updateLights();
 	};
 	$scope.refresh();
 
@@ -135,6 +145,6 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 	$interval(function(){
 		$scope.refresh();
 		
-	},1000);
+	},500);
 
 });

@@ -27,6 +27,7 @@
 		<div id="sliders">
 				
 				<div ng-repeat="light in lights" class="sliderItem clearfix">
+					<div class="sliderName">{{light.name}} {{light.state.on}}</div>
 					<div class="sliderButton"><button class="off" ng-click="switchLight(light.id, false)">off</button></div>
 					<div class="slider">
 					<rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options" ></rzslider>
