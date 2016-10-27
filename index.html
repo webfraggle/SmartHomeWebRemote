@@ -33,6 +33,12 @@
 					<rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options" ></rzslider>
 					</div>
 					<div class="sliderButton"><button class="on" ng-click="switchLight(light.id, true)">on</button></div>
+
+					<div class="additionalSlider" ng-show="light.type == $parent.ctLightType || light.type == $parent.colorLightType">
+						
+						<rzslider rz-slider-model="light.state.ct" rz-slider-options="light.optionsCt" ></rzslider>
+					</div>
+
 				</div>
 				
 				

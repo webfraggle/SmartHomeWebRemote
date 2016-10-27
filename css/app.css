@@ -47,6 +47,9 @@ button.off {
 
 div.sliderItem {
 	clear:both;
+	background-color: #323232;
+	margin-bottom: 5px;
+	padding: 5px;
 }
 div.sliderItem div.sliderName {
 	width: 100%;
@@ -69,5 +72,13 @@ div.sliderItem div.slider {
 }
 div.sliderItem div.sliderButton {
 	width: 10%;
+}
+
+div.sliderItem div.additionalSlider {
+	clear: both;
+	width: 80%;
+	float: none;
+	padding-left: 10%;
+	padding-right: 10%;
 }
 
