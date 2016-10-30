@@ -6,7 +6,7 @@ body, html {
 	color: #fff;
 	font-size: 15pt;
 	font-weight: 300;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	/*background-color: rgb(50,50,50);*/
 }
 
@@ -51,10 +51,10 @@ div.sliderItem {
 	margin-bottom: 5px;
 	padding: 5px;
 }
-div.sliderItem div.sliderName {
+div.sliderItem > div.sliderName {
 	width: 100%;
 }
-div.sliderItem div {
+div.sliderItem > div {
 	float: left;
 }
 div.sliderItem button {

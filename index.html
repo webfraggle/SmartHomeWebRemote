@@ -11,6 +11,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
 		<script src="vendor/rzslider/rzslider.js"></script>
+		<script src="node_modules/coffee-colors/index.js"></script>
 		
 		<script src="js/app.js"></script>
 		<script src="js/hue.controller.js"></script>
@@ -37,6 +38,10 @@
 					<div class="additionalSlider" ng-show="light.type == $parent.ctLightType || light.type == $parent.colorLightType">
 						
 						<rzslider rz-slider-model="light.state.ct" rz-slider-options="light.optionsCt" ></rzslider>
+					</div>
+					<div class="additionalSlider" ng-show="light.type == $parent.colorLightType">
+						
+						<rzslider rz-slider-model="light.state.hue" rz-slider-options="light.optionsHue" ></rzslider>
 					</div>
 
 				</div>
