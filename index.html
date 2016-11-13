@@ -11,10 +11,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
 		<script src="vendor/rzslider/rzslider.js"></script>
-		<script src="node_modules/coffee-colors/index.js"></script>
+		<script src="js/global-functions.js"></script>
 		
 		<script src="js/app.js"></script>
+		<script src="js/lamp.directive.js"></script>
+		<script src="js/hue.service.js"></script>
 		<script src="js/hue.controller.js"></script>
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,21 +31,8 @@
 		<div id="sliders">
 				
 				<div ng-repeat="light in lights" class="sliderItem clearfix">
-					<div class="sliderName">{{light.name}} {{light.state.on}}</div>
-					<div class="sliderButton"><button class="off" ng-click="switchLight(light.id, false)">off</button></div>
-					<div class="slider">
-					<rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options" ></rzslider>
-					</div>
-					<div class="sliderButton"><button class="on" ng-click="switchLight(light.id, true)">on</button></div>
-
-					<div class="additionalSlider" ng-show="light.type == $parent.ctLightType || light.type == $parent.colorLightType">
-						
-						<rzslider rz-slider-model="light.state.ct" rz-slider-options="light.optionsCt" ></rzslider>
-					</div>
-					<div class="additionalSlider" ng-show="light.type == $parent.colorLightType">
-						
-						<rzslider rz-slider-model="light.state.hue" rz-slider-options="light.optionsHue" ></rzslider>
-					</div>
+					<hue-lamp-sliders light="light"></hue-lamp-sliders>
+					
 
 				</div>
 				

@@ -69,9 +69,11 @@ div.sliderItem button.on {
 
 div.sliderItem div.slider {
 	width: 80%;
+	float:left;
 }
 div.sliderItem div.sliderButton {
 	width: 10%;
+	float: left;
 }
 
 div.sliderItem div.additionalSlider {
