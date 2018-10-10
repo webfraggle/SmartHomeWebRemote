@@ -1,7 +1,7 @@
 
 angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
 	
-	$scope.ip = '192.168.178.54';
+	$scope.ip = '192.168.178.26';
 	$scope.key = '87wTw9H651KevYIWhQl2cw7K8KioqN4eLGe0N1Fv';
 	$scope.url = 'http://'+$scope.ip+'/api/'+$scope.key+'/';
 	$scope.lights = [];
@@ -12,7 +12,8 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 	$scope.test = 50;
 
 	console.log(hueService);
-	
+
+
 	$scope.briSliderOptions = {
 		    floor: 0,
 		    ceil: 254,
@@ -259,10 +260,10 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 	};
 	$scope.refresh();
 
-	
-	$interval(function(){
-		$scope.refresh();
+	// TODO: only when visible
+	// $interval(function(){
+	// 	$scope.refresh();
 		
-	},500);
+	// },500);
 
 });

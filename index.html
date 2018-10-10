@@ -2,28 +2,57 @@
 <html lang="en" ng-app="huedisplay"  ng-controller="AppCtrl">
 	<head>
 		<meta charset="utf-8">
-		<title>HUE Display</title>
-		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'> -->
+		<title>SmartHome Display</title>
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,900' rel='stylesheet' type='text/css'> -->
+		<!-- <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=Catamaran:700,400,300" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.css">
+		<link rel="stylesheet" href="css/owfont-regular.min.css">
 		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/lights.css">
+		<link rel="stylesheet" href="css/tv.css">
+		<link rel="stylesheet" href="css/circle.css">
+		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<link rel="stylesheet" href="css/overwrites.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-touch.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
-		<script src="vendor/rzslider/rzslider.js"></script>
+		<!-- <script src="vendor/rzslider/rzslider.js"></script> -->
+		<!-- <script src="vendor/angular-long-press.min.js"></script> -->
+		<script src="js/config.js"></script>
 		<script src="js/global-functions.js"></script>
 		
 		<script src="js/app.js"></script>
 		<script src="js/lamp.directive.js"></script>
 		<script src="js/hue.service.js"></script>
-		<script src="js/hue.controller.js"></script>
-		<meta name="apple-mobile-web-app-capable" content="yes">
+		<script src="js/lg.service.js"></script>
+		<!-- <script src="js/hue.controller.js"></script> -->
+		<script src="js/time.controller.js"></script>
+		<script src="js/tado.controller.js"></script>
+		<script src="js/netatmo.controller.js"></script>
+		<script src="js/lights.controller.js"></script>
+		<script src="js/tv.controller.js"></script>
+		<!-- <script src="js/overview.controller.js"></script> -->
+		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		 <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+		 
+		 <!-- Optional - Adds useful class to manipulate icon font display -->
+		 <link rel="stylesheet" href="css/helper.css">
+
+
+
 	</head>
-	<body>
-	<div id="hue" ng-controller="HueCtrl">
+	<body ng-style="bodyStyle">
+		<!-- <div id="nav" style="display: none">
+			<button ng-click="toggleState('heater')">Überblick</button>
+			<button ng-click="toggleState('hue')">Hue</button>
+		</div> -->
+	<!-- <div id="hue" ng-controller="HueCtrl" ng-show="state == 'hue'">
 		<div id="buttons">
 			<button ng-click="switchAllLights(false)" class="off">All off</button>
 			<button ng-click="switchAllLights(true)" class="on">All on</button>
@@ -38,6 +67,192 @@
 				
 				
 		</div>
+	</div> -->
+	<div id="time" ng-controller="TimeCtrl"><div class="clock">{{time | date:'HH:mm'}}</div><div class="date">{{time | date:'dd.MM.yyyy'}}</div></div>
+	<div id="tado" ng-controller="TadoCtrl" ng-style="bgStyle">
+		<div class="tempIst"><span ng-bind-html="heaterTemp | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span></div>
+		<div class="tempSoll" ng-show="heaterSollTemp > 0">{{heaterSollTemp | number:0}}<span class="grad">&deg;C</span></div>
+		<div class="tempSoll" ng-show="heaterSollTemp == 0">AUS</div>
+		<div class="up" ng-click="setTemp(1)"><span class="pe-7s-angle-up-circle"></span></div>
+		<div class="down" ng-click="setTemp(-1)"><span class="pe-7s-angle-down-circle"></span></div>
+	
+		<div class="auto" ng-click="setTempAuto()" ng-style="autoBtnStyle">Auto</div>
+		<div class="icon" ng-show="tadoMode == 'HOME' && !overlayType"><span class="pe-7s-home"></span></div>
+		<div class="icon" ng-show="overlayType == 'MANUAL'"><img src="img/One-Finger-icon-black.png"></div>
+
+		<div class="heatingPower"><img ng-src="img/tadoprozent/{{powerImg}}.png" /></div>
+		<!-- <div>{{tadoMode}} {{overlayType}}</div> -->
+	</div>
+	<div id="netatmo" ng-controller="NetatmoCtrl">
+			<div id="inside" class="tempView">
+				<div class="temp"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
+				<div class="subvalues">
+				<div class="co2 subvalue">{{inside.CO2 | number:0}}<span class="grad">ppm</span></div>
+				<div class="humidity subvalue">{{inside.Humidity | number:0}}<span class="grad">%</span></div>
+			</div>
+			</div>
+			<div id="outside" class="tempView">
+				<div class="temp"><span ng-bind-html="outside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':outside.temp_trend=='up','pe-7s-angle-down':outside.temp_trend=='down','pe-7s-angle-right':outside.temp_trend=='stable'}"></span></div>
+				<div class="subvalues">
+					<div class="humidity subvalue">{{outside.Humidity | number:0}}<span class="grad">%</span></div>
+					<div class="pressure subvalue">{{inside.Pressure | number:0}}<span class="grad">mbar</span></div>
+				</div>	
+			</div>
+			<div class="weather"><i class="owf" ng-class="weatherIcon"></i></div>
+			<div class="forecast clearfix">
+				<div class="day" ng-repeat="day in forecast | limitTo:5">
+					<div>{{day.dt*1000 | date:'EEE, dd.MM.' | dayTranslate }}</div>
+					<!-- <div>{{day.dt*1000 | date:'dd.MM.' }}</div> -->
+					<div class="icon"><i class="owf" ng-class="'owf-'+day.weather[0].id"></i></div>
+					<div class="temp">{{day.temp.day | number:0 }}&deg;</div>
+				</div>
+			</div>
+			<!-- <div id="heaterTemp" class="tempView"><div>Heizung Ist</div>{{heaterTemp | number:1}}<span class="grad">&deg;C</span></div> -->
+			<!-- <div id="heaterSollTemp" class="tempView"><div>Heizung Soll</div>{{heaterSollTemp | number:1}}<span class="grad">&deg;C</span></div> -->
+	</div>
+	
+	
+	
+	<div id="lights" ng-controller="LightsCtrl" >
+
+		<!-- <div class="btn drittel" ng-repeat="light in lights"  ng-click="lightClicked($event,light)" ng-class="{'selected':currentLight==light}"> -->
+		<div class="btn drittel" ng-repeat="light in lights"  my-touchstart="lightTouchStart(light)" my-touchend="lightTouchEnd(light)" ng-class="{'selected':currentLight==light}">
+			<div class="title">{{light.title}}</div>
+			<div class="switch"><img ng-src="img/icons8-toggle-{{light.on ? 'on' : 'off'}}-96.png" width="50" height="50" /></div>
+			<div class="light"><span class="pe-7s-light"></span></div>
+			<div class="lightstate"><div class="c100 small circle" ng-class="'p'+light.bri">
+					  <span></span>
+					  <div class="slice">
+						<div class="bar"></div>
+						<div class="fill"></div>
+					  </div>
+					</div>
+				</div>
+			<div class="colorstate" ng-show="light.featureHue && light.on && light.colormode == 'hs'" ng-style="light.cssHue"></div>
+			<div class="colorstate" ng-show="light.featureCt && light.on && light.colormode == 'ct'" ng-style="light.cssCt"></div>
+			<div class="colorstate" ng-show="light.on && light.colormode == ''" ng-style="light.cssBri"></div>
+		</div>
+		<div class="btn drittel smaller" ng-click="allesAus()">
+			<div class="bigTitle">Alle<br/>Lichter<br/>aus</div>
+		</div>
+		<div id="lightParameter" ng-show="parameterVisible">
+			<div class="slider brightness" my-touchstart="touchMove()" my-touchmove="touchMove()">
+
+			</div>
+			<div class="slider temperature" my-touchstart="touchMove()" my-touchmove="touchMove()" ng-show="currentLight.featureCt">
+
+				</div>
+			<div class="slider color" my-touchstart="touchMove()" my-touchmove="touchMove()" ng-show="currentLight.featureHue">
+
+				</div>
+		</div>
+		
+		<!-- <div class="btn halb" ng-click="update()">
+			<div class="more"><span class="pe-7s-more"></span></div>
+		</div>	 -->
+	</div>
+	<div id="tv" ng-controller="TvCtrl" >
+			<div class="btn drittel smaller" ng-click="toggleVisibility()">
+					<div class="title">LG Fernseher</div>
+
+				<div class="audiostate"><div class="c100 small circle" ng-class="'p'+lgService.volume">
+						<span class=" audioicon" ng-class="{'pe-7s-mute':lgService.muted==true,'pe-7s-volume':lgService.muted==false}"></span>
+						<div class="slice">
+						  <div class="bar"></div>
+						  <div class="fill"></div>
+						</div>
+					  </div>
+				  </div>
+			</div>
+
+			<div id="tvControl" ng-show="visible">
+					<div class="demo" style="display:none; z-index:300; background-color:darkblue;">
+							<div ng-click="lgService.volumeUp()">Volume Up</div>
+							<div ng-click="lgService.volumeDown()">Volume Down</div>
+							<div ng-click="lgService.launch('netflix')">Netflix</div>
+							<div ng-click="lgService.listLaunchPoints()">List Launch Points</div>
+							<div ng-click="lgService.getServiceList()">Get ServiceList</div>
+							<div ng-click="lgService.rawCmd('com.webos.applicationManager/getForegroundAppInfo')">com.webos.applicationManager/getForegroundAppInfo</div>
+							<div ng-click="lgService.rawCmd('com.webos.service.appstatus/getAppStatus')">com.webos.service.appstatus/getAppStatus</div>
+							<div ng-click="lgService.rawCmd('system.launcher/getAppState')">system.launcher/getAppState</div>
+							<div ng-click="lgService.rawCmd('com.webos.applicationManager/listApps')">com.webos.applicationManager/listApps</div>
+							<div ng-click="lgService.rawCmd('tv/getExternalInputList')">tv/getExternalInputList</div>
+							<div ng-click="lgService.click()">Click</div>
+							<div ng-click="lgService.button('UP')">UP</div>
+							<div ng-click="lgService.button('DOWN')">DOWN</div>
+							<div ng-click="lgService.button('LEFT')">LEFT</div>
+							<div ng-click="lgService.button('RIGHT')">RIGHT</div>
+							<div ng-click="lgService.button('BACK')">BACK</div>
+							<div ng-click="lgService.button('HOME')">HOME</div>
+							<div><img ng-src="{{lgService.currentApp.icon}}"/></div>
+							<div>{{lgService.currentApp.title}}/></div>
+						</div>
+
+					<div class="navigator">
+						<div class="up" ng-click="lgService.button('UP')"><span class="pe-7s-up-arrow"></span></div>
+						<div class="down" ng-click="lgService.button('DOWN')"><span class="pe-7s-bottom-arrow"></span></div>
+						<div class="left" ng-click="lgService.button('LEFT')"><span class="pe-7s-left-arrow"></span></div>
+						<div class="right" ng-click="lgService.button('RIGHT')"><span class="pe-7s-right-arrow"></span></div>
+						<div class="ok" ng-click="lgService.click()"><span class="pe-7s-check"></span></span></div>
+						<div class="home" ng-click="lgService.button('HOME')"><span class="pe-7s-home"></span></span></div>
+						<div class="exit" ng-click="lgService.button('EXIT')"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve" width="512px" height="512px">
+							<g>
+								<path d="M54.424,28.382c0.101-0.244,0.101-0.519,0-0.764c-0.051-0.123-0.125-0.234-0.217-0.327L42.208,15.293   c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L51.087,27H20.501c-0.552,0-1,0.447-1,1s0.448,1,1,1h30.586L40.794,39.293   c-0.391,0.391-0.391,1.023,0,1.414C40.989,40.902,41.245,41,41.501,41s0.512-0.098,0.707-0.293l11.999-11.999   C54.299,28.616,54.373,28.505,54.424,28.382z" fill="#FFFFFF"/>
+								<path d="M36.501,33c-0.552,0-1,0.447-1,1v20h-32V2h32v20c0,0.553,0.448,1,1,1s1-0.447,1-1V1c0-0.553-0.448-1-1-1h-34   c-0.552,0-1,0.447-1,1v54c0,0.553,0.448,1,1,1h34c0.552,0,1-0.447,1-1V34C37.501,33.447,37.053,33,36.501,33z" fill="#FFFFFF"/>
+							</g>
+						</svg>
+					</span></div>
+					<div class="back" ng-click="lgService.button('BACK')"><span class="pe-7s-back-2"></span></div>
+				</div>
+				<div class="power" ng-click="lgService.rawCmd('system/turnOff')"><span class="pe-7s-power"></span></span></div>
+					<div class="btn drittel smaller netflix launchbtn" 
+					ng-click="lgService.launch('netflix')"
+					ng-class="{'high':lgService.currentApp.id=='netflix'}">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 276.742"><path d="M140.803 258.904c-15.404 2.705-31.079 3.516-47.294 5.676l-49.458-144.856v151.073c-15.404 1.621-29.457 3.783-44.051 5.945v-276.742h41.08l56.212 157.021v-157.021h43.511v258.904zm85.131-157.558c16.757 0 42.431-.811 57.835-.811v43.24c-19.189 0-41.619 0-57.835.811v64.322c25.405-1.621 50.809-3.785 76.482-4.596v41.617l-119.724 9.461v-255.39h119.724v43.241h-76.482v58.105zm237.284-58.104h-44.862v198.908c-14.594 0-29.188 0-43.239.539v-199.447h-44.862v-43.242h132.965l-.002 43.242zm70.266 55.132h59.187v43.24h-59.187v98.104h-42.433v-239.718h120.808v43.241h-78.375v55.133zm148.641 103.507c24.594.539 49.456 2.434 73.51 3.783v42.701c-38.646-2.434-77.293-4.863-116.75-5.676v-242.689h43.24v201.881zm109.994 49.457c13.783.812 28.377 1.623 42.43 3.242v-254.58h-42.43v251.338zm231.881-251.338l-54.863 131.615 54.863 145.127c-16.217-2.162-32.432-5.135-48.648-7.838l-31.078-79.994-31.617 73.51c-15.678-2.705-30.812-3.516-46.484-5.678l55.672-126.75-50.269-129.992h46.482l28.377 72.699 30.27-72.699h47.295z" fill="#fff"/></svg>
+					</div>
+					<div class="btn drittel smaller ps4 launchbtn" 
+					ng-click="lgService.launch('com.webos.app.hdmi4')"
+					ng-class="{'high':lgService.currentApp.id=='com.webos.app.hdmi4'}">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 106.726 106.726" style="enable-background:new 0 0 106.726 106.726;" xml:space="preserve" >
+							<g>
+								<g>
+									<path d="M11.703,67.563l-3.6,1.4c-5.4,2.3-8.2,4.7-8.1,6.8c0.3,3.1,3.8,5.4,10.2,7.1    c8.3,2.2,16.7,2.7,25.4,1.4v-8.7l0,0l-6.9,2.6c-7.2,2.5-10.9,0.4-10.9,0.4c-1.1-0.7-1.6-2.4,1.4-3.5l3.8-1.4l12.6-4.5v-10.1    l-3.2,1.1L11.703,67.563z" fill="#FFFFFF"/>
+									<path d="M64.303,32.463v25.9c5.4,2.6,10.2,2.8,13.8,0.1c3.7-2.6,5.7-7.1,5.7-13.9c0-7.1-1.4-12.5-4.5-16.1    c-2.8-3.8-7.8-7-15.2-9.5c-9.2-3-17-5.6-23.2-6.9v77.5l16.7,5.1v-64.4C57.503,26.363,64.303,26.663,64.303,32.463z" fill="#FFFFFF"/>
+									<path d="M106.703,72.463c-0.1-2.7-3.3-4.8-9-6.7c-6.4-2.1-11.9-3.1-17.9-2.9c-5.5,0.1-12.1,1.9-18,3.8v9.9    l16.2-5.7c0,0,4.9-1.8,9.1-0.7c3.2,0.8,3,2.6-0.2,3.7l-3.7,1.5l-21.4,7.7v10.1l10-3.6l24-8.5l2.8-1.3    C104.403,77.663,107.003,75.363,106.703,72.463z" fill="#FFFFFF"/>
+								</g>
+							</g>
+							</svg>
+								
+					</div>
+					<div class="btn drittel smaller amazon launchbtn" 
+					ng-click="lgService.launch('com.webos.app.hdmi1')"
+					ng-class="{'high':lgService.currentApp.id=='com.webos.app.hdmi1'}">
+						<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007zm3.559 1.988c-2.748 1.472-5.735 2.181-8.453 2.181-4.027 0-7.927-1.393-11.081-3.706-.277-.202-.481.154-.251.416 2.925 3.326 6.786 5.326 11.076 5.326 3.061 0 6.614-1.214 9.066-3.494.406-.377.058-.945-.357-.723zm.67 2.216c-.091.227.104.32.31.147 1.339-1.12 1.685-3.466 1.411-3.804-.272-.336-2.612-.626-4.04.377-.22.154-.182.367.062.337.805-.096 2.595-.312 2.913.098.319.41-.355 2.094-.656 2.845z" fill-rule="evenodd" clip-rule="evenodd"  fill="#fff"/></svg>
+					</div>
+					<div class="btn drittel smaller settop launchbtn" 
+					ng-click="lgService.launch('com.webos.app.hdmi2')"
+					ng-class="{'high':lgService.currentApp.id=='com.webos.app.hdmi2'}">
+						Humax
+					</div>
+					<div class="btn drittel smaller live launchbtn" 
+					ng-click="lgService.launch('com.webos.app.livetv')"
+					ng-class="{'high':lgService.currentApp.id=='com.webos.app.livetv'}">
+						Live TV
+					</div>
+					<div class="audio up pe-7s-plus" ng-click="lgService.volumeUp()">
+						
+					</div>
+					<div class="audio down pe-7s-less" ng-click="lgService.volumeDown()">
+						
+					</div>
+					<div class="audio volume">
+						{{lgService.volume}}
+					</div>
+
+					<div class="audio close pe-7s-close-circle" ng-click="toggleVisibility()">
+					</div>
+					
+				</div>
 	</div>
 
 		

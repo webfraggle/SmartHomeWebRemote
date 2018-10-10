@@ -1,1 +1,7 @@
+netatmo_get_values/auth.inc.php
+netatmo_get_values/config.php
+js/config.js
+tado_api/auth.inc.php
+tado_api/functions.inc.php
 node_modules/
+fonts/Pe-icon-7-stroke*

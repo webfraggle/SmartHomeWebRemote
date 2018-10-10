@@ -1,7 +1,7 @@
 {
   "name": "huewebapp",
   "version": "0.0.0",
-  "description": "A web app for controlling Philips Hue lights. iPad 1 comaptible.",
+  "description": "A web app for controlling smarthome devices with raspberry pi.",
   "main": "index.html",
   "dependencies": {
     "coffee-colors": "~1.0.1"

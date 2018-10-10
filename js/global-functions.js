@@ -30,3 +30,8 @@ function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
+
+function round5(x)
+{
+    return Math.ceil(x/5)*5;
+}

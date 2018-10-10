@@ -1,0 +1,10 @@
+var hue_ip='IP';
+var hue_key='APP KEY';
+var hue_url='http://'+hue_ip+'/api/'+hue_key+'/';
+var netatmo_get_url = 'https://where you placed the netatmo files/netatmo_get_values/get.php';
+var openweathermap_key = 'register for an api key';
+var openweathermap_lat = '123.0';
+var openweathermap_lon = '456.0';
+var tado_url_prefix = 'https://where you placed/tado_api/api.php';
+var tado_home_id = '123456';
+var tado_zone_id = '1'

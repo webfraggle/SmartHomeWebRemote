@@ -1,0 +1,119 @@
+div#lights {
+	/* display: none; */
+}
+
+div#lights div.btn{
+	float: left;
+	margin: 1px;
+	background-color: #121212;
+	height: 150px;
+	position: relative;
+	border-radius: 10px;
+}
+
+div#lights div.halb {
+	width: calc(50% - 2px);
+}
+div#lights div.drittel {
+	width: calc(33.3% - 2px);
+}
+div#lights div.btn.smaller {
+	height:114px;
+}
+div#lights div.btn div{
+	text-align: center;
+}
+div#lights div.btn div.bigTitle{
+    font-size: 32px;
+    margin-top: 15px;
+    line-height: 29px;
+}
+div#lights div.btn.selected{
+	background-color: #295a28;
+}
+
+div#lights div.btn div.more{
+	font-size: 80px;
+	line-height: 124px;
+}
+div#lights div.btn div.title{
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 1px;
+    margin-top: 5px;
+}
+div#lights div.btn div.light{
+	position: absolute;
+	width: 100%;
+	top: 4px;
+	font-size: 19px;
+	right: 4px;
+	text-align:  right;
+}
+
+div#lights div.btn div.lightstate{
+	position: absolute;
+	/* width: 100%; */
+	top: 88px;
+	left: 54px;
+	font-size: 42px;
+}
+
+div#lights div.btn div.lightstate img{
+	width: 43px;
+	height: 43px;
+}
+
+div#lights div.btn div.colorstate {
+	position: absolute;
+	/* width: 100%; */
+	top: 96px;
+	left: 62px;
+	width: 34px;
+	height: 34px;
+	border-radius: 16px;
+    background-color: #ccc;
+    pointer-events: none;
+}
+
+div#lights div#lightParameter {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    width: 400px;
+    height: 440px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid white;
+}
+
+div#lights div#lightParameter div.slider{
+    width: 120px;
+    height: 420px;
+    background-color: #fff;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius:  10px;
+    /* background-image: linear-gradient(to top, #000 10%, #fff 90%); */
+    border: 1px solid #ccc;
+}
+
+div#lights div#lightParameter div.brightness{
+
+    background-image: linear-gradient(to top, #000 10%, #fff 90%);
+
+}
+div#lights div#lightParameter div.temperature{
+
+    left: 140px;
+    background-image: linear-gradient(to top, #ceddff 10%, #ffbc6c 90%);
+
+}
+div#lights div#lightParameter div.color{
+    left: 270px;
+    background-image: linear-gradient(to top, hsl(0,100%,50%)10%,hsl(60,100%, 50%), hsl(120,100%, 50%), hsl(180, 100%, 50%), hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%) 90%);
+
+}
+
+
