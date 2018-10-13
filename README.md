@@ -5,7 +5,10 @@ For use with raspberry pi touch display or a smartphone.
 
 This is not for beginners, because you need many tokens and some knowledge about apis.
 
-![Image of Smarthome](https://raw.githubusercontent.com/webfraggle/HueWebRemote/master/images/smarthomeDisplay.png)
+![Scrreenshot of Smarthome](https://raw.githubusercontent.com/webfraggle/HueWebRemote/master/images/smarthomeDisplay.png | width=256)
+![Image of Display](https://raw.githubusercontent.com/webfraggle/HueWebRemote/master/images/foto1.jpg | width=256)
+![Image of Display](https://raw.githubusercontent.com/webfraggle/HueWebRemote/master/images/foto2.jpg | width=256)
+
 
 Rename js/config.example.js to js/config.js and add your credentials.
 
