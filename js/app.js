@@ -8,6 +8,7 @@ var myApp = angular.module('huedisplay', [
 	'gui.netatmo',
 	'gui.lights',
 	'gui.tv',
+	'gui.fritz',
 	'gui.tado'
 
 	// 'rzModule'

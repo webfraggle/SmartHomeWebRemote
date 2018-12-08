@@ -1,0 +1,216 @@
+#outerDiv {
+    overflow: hidden;
+    width: 640px;
+    height: 360px;
+    background-color: #000;
+}
+html {
+    background-color: #ddd;
+}
+body {
+    background-color: #ddd;
+    width: 640px;
+    height: 360px;
+    perspective: 1000px;
+}
+
+.funky-show-hide {
+    /* transform-origin: center center -180px;
+    transition: transform 0.5s ease 0.0s, opacity 0.1s ease 0.0s;
+    transform: rotateX(0deg);
+    opacity: 1; */
+}
+
+.funky-show-hide.ng-hide-add {
+    /* transition: transform 0.5s ease 0.0s, opacity 0.1s linear 0.0s;
+    transform: rotateX(0deg);
+    opacity: 1; */
+  }
+  
+  .funky-show-hide.ng-hide-add.ng-hide-add-active {
+    /* transition: transform 0.5s ease, opacity 0.1s linear 0.2s;
+    transform: rotateX(-90deg);
+    opacity: 0; */
+}
+
+.funky-show-hide.ng-hide-remove {
+    /* transform: rotateX(90deg);
+    opacity: 0; */
+}
+
+.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
+    /* transform: rotateX(0);
+    opacity: 1; */
+  }
+
+.blend-show-hide {
+    transition: opacity 1s linear 1s;
+    opacity: 1;
+}
+
+.blend-show-hide.ng-hide-add {
+    opacity: 1;
+  }
+  
+  .blend-show-hide.ng-hide-add.ng-hide-add-active {
+    transition: opacity 1s linear;
+    opacity: 0;
+}
+
+.blend-show-hide.ng-hide-remove {
+    opacity: 0;
+}
+
+.blend-show-hide.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+  }
+  
+
+
+div#time,
+div#NetatmoCtrl,
+div.slide,
+div#netatmo
+{
+    overflow: hidden;
+    width: 640px;
+    height: 360px;
+    position: absolute;
+    top: 0;
+    left: 0;    
+    /* opacity: 1; */
+    padding: 0;
+    margin: 0;
+    float: none;
+}
+
+div#time div.clock {
+    position: absolute;
+    left:0;
+    top: 0;
+    font-size: 250px;
+    line-height: 220px;
+}
+div#time div.date {
+    position: absolute;
+    left:0;
+    top: 210px;
+    font-size: 120px;
+    line-height: 100px;
+}
+
+div#netatmo div#inside,
+div#netatmo div#outside
+
+{
+    padding: 0;
+    transform-origin: top left;
+    transform: scale(3.2);
+    top: 40px;
+    position: absolute;
+    left: 120px;
+}
+
+div.description {
+    position: absolute;
+    top: 360px;
+    left: 0px;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    font-size: 80px;
+    line-height: 80px;
+    width: 360px;
+    text-align: center;
+}
+
+div#netatmo div#outside div.temp {
+    float: left;
+    text-align: left;
+}
+
+div#netatmo div.weather {
+    padding: 0;
+    width: 100%;
+    font-size: 300px;
+    line-height: 300px;
+}
+
+div#netatmo div.forecast div.day {
+    width: 25%;
+    margin-bottom: 45px;
+}
+div#netatmo div.forecast div.day div.icon {
+    font-size: 93px;
+}
+
+div#netatmo div.forecast div.day div.temp {
+    font-size: 40px;
+    margin-top: 5px;
+    
+}
+
+div#netatmo div#inside div.temp,
+div#netatmo div#inside div.co2,
+div#netatmo div#inside div.humidity,
+div#netatmo div#outside div.temp,
+div#netatmo div#outside div.pressure,
+div#netatmo div#outside div.humidity
+{
+    position: absolute;
+}
+
+div#netatmo div#inside div.temp,
+div#netatmo div#outside div.temp
+{
+    left:0px;
+    top:0px;
+}
+div#netatmo div#inside div.co2,
+div#netatmo div#outside div.pressure
+{
+    left:0px;
+    top: 50px;
+}
+div#netatmo div#inside div.humidity,
+div#netatmo div#outside div.humidity
+{
+    left: 100px;
+    top:50px;
+}
+
+div#netatmo div.forecast div.day {
+	position: absolute;
+	width: 20%;
+	font-size: 25px;
+	line-height: 25px;
+}
+div#netatmo div.forecast div.day div.icon {
+	font-size: 127px;
+	margin-top: 10px;
+}
+div#netatmo div.forecast div.day div.temp {
+	font-size: 50px;
+	margin-top: 5px;
+}
+
+div#netatmo div.forecast div.day0 {
+	left: 0px;
+}
+div#netatmo div.forecast div.day1 {
+	left: 77px;
+}
+div#netatmo div.forecast div.day2 {
+	left: 154px;
+}
+div#netatmo div.forecast div.day3 {
+	left: 231px;
+}
+div#netatmo div.forecast div.day4 {
+	left: 308px;
+}
+div#netatmo div.forecast div.day5 {
+	left: 385px;
+}
+div#netatmo div.forecast div.day6 {
+	left: 462px;
+}

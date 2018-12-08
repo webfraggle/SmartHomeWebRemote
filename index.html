@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/app.css">
 		<link rel="stylesheet" href="css/lights.css">
 		<link rel="stylesheet" href="css/tv.css">
+		<link rel="stylesheet" href="css/fritz.css">
 		<link rel="stylesheet" href="css/circle.css">
 		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
@@ -33,6 +34,7 @@
 		<script src="js/netatmo.controller.js"></script>
 		<script src="js/lights.controller.js"></script>
 		<script src="js/tv.controller.js"></script>
+		<script src="js/fritz.controller.js"></script>
 		<!-- <script src="js/overview.controller.js"></script> -->
 		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -253,6 +255,26 @@
 					</div>
 					
 				</div>
+	</div>
+	<div id="fritz" ng-controller="FritzCtrl" >
+		<div class="btn drittel smaller" ng-click="toggleVisibility()">
+				<div class="title">Internet</div>
+				
+				<div class="speedImage">
+						<img ng-src="{{imageSrc}}" />
+					
+			  </div>
+		</div>
+
+		<div id="fritzControl" ng-show="visible">
+			<div class="pictureFrame" scrolling="no">
+				<iframe src="https://www.ketzler.de/sh/pictureFrame/settings.html"></iframe>
+			</div>
+
+			<div class="audio close pe-7s-close-circle" ng-click="toggleVisibility()">
+			</div>
+				
+			</div>
 	</div>
 
 		
