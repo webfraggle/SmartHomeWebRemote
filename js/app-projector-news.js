@@ -5,6 +5,7 @@ var myApp = angular.module('huedisplay', [
 	// 'ngTouch',
 	// 'pr.longpress',
 	'gui.time',
+	'gui.news',
     'gui.netatmo',
     'ngAnimate'
 	// 'gui.lights',

@@ -8,3 +8,5 @@ var openweathermap_lon = '456.0';
 var tado_url_prefix = 'https://where you placed/tado_api/api.php';
 var tado_home_id = '123456';
 var tado_zone_id = '1'
+var newsapi_apikey = 'API KEY from newsapi.org';
+var newsapi_sources = 'die-zeit,spiegel-online,wired-de';

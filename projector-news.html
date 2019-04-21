@@ -11,15 +11,16 @@
 		<link rel="stylesheet" href="css/circle.css">
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<link rel="stylesheet" href="css/overwrites.css">
-		<link rel="stylesheet" href="css/projector.css">
+		<link rel="stylesheet" href="css/projector-news.css">
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular-animate.js"></script>
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-touch.js"></script> -->
 		<script src="js/config.js"></script>
 		<script src="js/global-functions.js"></script>
 		
-		<script src="js/app-projector.js"></script>
+		<script src="js/app-projector-news.js"></script>
 		<script src="js/time.controller.js"></script>
+		<script src="js/news.controller.js"></script>
 		<script src="js/netatmo.controller.js"></script>
 		<!-- <script src="js/overview.controller.js"></script> -->
 		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
@@ -47,29 +48,35 @@
 	</head>
 	<body ng-style="bodyStyle"  ng-keydown="handleKeyDown($event)">
         <div id="outerDiv">
+            <div id="news" ng-controller="NewsCtrl">
+                <img ng-src="{{image}}" />
+                <div class="headline">{{title}}</div>
+                <div class="top"></div>
+            </div>
+
 
             <div id="time" ng-controller="TimeCtrl" ng-show="state == 0" class="funky-show-hide">
-				<div class="clock blend-show-hide" ng-show="substate == 0">{{time | date:'HH:mm'}}</div>
-				<div class="date blend-show-hide" ng-show="substate == 1">{{time | date:'dd.MM.yyyy'}}</div></div>
+				<div class="clock blend-show-hide top-right" ng-show="substate == 0">{{time | date:'HH:mm'}}</div>
+				<div class="date blend-show-hide top-right" ng-show="substate == 1">{{time | date:'dd.MM.yyyy'}}</div></div>
 
             <div id="netatmo" ng-controller="NetatmoCtrl">
 				<div class="funky-show-hide slide" ng-show="state == 1">
-					<div class="description">Innen</div>
+					<div class="description blend-show-hide top-left" ng-show="state == 1">Innen</div>
 					<div id="inside" class="tempView">
-						<div class="temp blend-show-hide" ng-show="substate == 2"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
-						<div class="co2 subvalue blend-show-hide" ng-show="substate == 3">{{inside.CO2 | number:0}}<span class="grad">ppm</span></div>
-						<div class="humidity subvalue blend-show-hide" ng-show="substate == 4">{{inside.Humidity | number:0}}<span class="grad">%</span></div>
+						<div class="temp blend-show-hide top-right" ng-show="substate == 2"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
+						<div class="co2 subvalue blend-show-hide top-right" ng-show="substate == 3">{{inside.CO2 | number:0}}<span class="grad">ppm</span></div>
+						<div class="humidity subvalue blend-show-hide top-right" ng-show="substate == 4">{{inside.Humidity | number:0}}<span class="grad">%</span></div>
 					</div>
             	</div>
 				<div class="funky-show-hide slide" ng-show="state == 2">
-					<div class="description">Außen</div>
-					<div id="outside" class="tempView">
-						<div class="temp blend-show-hide" ng-show="substate == 5"><span ng-bind-html="outside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':outside.temp_trend=='up','pe-7s-angle-down':outside.temp_trend=='down','pe-7s-angle-right':outside.temp_trend=='stable'}"></span></div>
-						<div class="pressure subvalue blend-show-hide" ng-show="substate == 6">{{inside.Pressure | number:0}}<span class="grad">mbar</span></div>
-						<div class="humidity subvalue blend-show-hide" ng-show="substate == 7">{{outside.Humidity | number:0}}<span class="grad">%</span></div>
+					<div class="description blend-show-hide top-left" ng-show="state == 2">Außen</div>
+					<div id="outside top-left" class="tempView">
+						<div class="temp blend-show-hide  top-right" ng-show="substate == 5"><span ng-bind-html="outside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':outside.temp_trend=='up','pe-7s-angle-down':outside.temp_trend=='down','pe-7s-angle-right':outside.temp_trend=='stable'}"></span></div>
+						<div class="pressure subvalue blend-show-hide  top-right" ng-show="substate == 6">{{inside.Pressure | number:0}}<span class="grad">mbar</span></div>
+						<div class="humidity subvalue blend-show-hide  top-right" ng-show="substate == 7">{{outside.Humidity | number:0}}<span class="grad">%</span></div>
 					</div>
 				</div>
-				<div class="funky-show-hide slide" ng-show="state == 3">
+				<div class="blend-show-hide slide" ng-show="state == 3">
 					<div class="weather"><i class="owf" ng-class="weatherIcon"></i></div>
 				</div>
 				<div class="funky-show-hide slide" ng-show="state == 4">

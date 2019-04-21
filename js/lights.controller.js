@@ -20,8 +20,8 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     $scope.fernseh.title = 'Fernsehlampe';
     
     $scope.go = angular.copy($scope.lampTemplate);
-    $scope.go.lightIds = [4];
-    $scope.go.title = 'Go';
+    $scope.go.lightIds = [9];
+    $scope.go.title = 'Ambiente';
 
     $scope.lights = [$scope.fernseh, $scope.decke, $scope.go];
     $scope.timer = null;
@@ -252,7 +252,7 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
 
 	$scope.allesAus = function()
 	{
-		$scope.setMultilights([1,2,3,4,5,7],false);
+		$scope.setMultilights([1,2,3,4,5,7,9],false);
 	}
 	$scope.setMultilights = function(lights,v)
 	{

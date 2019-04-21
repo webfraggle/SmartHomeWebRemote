@@ -28,14 +28,12 @@ body {
   }
   
   .funky-show-hide.ng-hide-add.ng-hide-add-active {
-    /* transition: transform 0.5s ease, opacity 0.1s linear 0.2s;
-    transform: rotateX(-90deg);
-    opacity: 0; */
+    transition: opacity 1.0s linear 1s;
+    opacity: 0;
 }
 
 .funky-show-hide.ng-hide-remove {
-    /* transform: rotateX(90deg);
-    opacity: 0; */
+    opacity: 0;
 }
 
 .funky-show-hide.ng-hide-remove.ng-hide-remove-active {
@@ -85,18 +83,10 @@ div#netatmo
 }
 
 div#time div.clock {
-    position: absolute;
-    left:0;
-    top: 0;
-    font-size: 250px;
-    line-height: 220px;
+
 }
 div#time div.date {
-    position: absolute;
-    left:0;
-    top: 210px;
-    font-size: 120px;
-    line-height: 100px;
+
 }
 
 div#netatmo div#inside,
@@ -105,22 +95,19 @@ div#netatmo div#outside
 {
     padding: 0;
     transform-origin: top left;
-    transform: scale(3.2);
-    top: 40px;
+    /* transform: scale(3.2); */
+    top: 0px;
     position: absolute;
-    left: 120px;
+    right: 0px;
+    width: 100%;
+}
+div#netatmo div.subvalue {
+    float: none;
+    margin: 0;
+    padding: 0;
 }
 
 div.description {
-    position: absolute;
-    top: 360px;
-    left: 0px;
-    transform-origin: top left;
-    transform: rotate(-90deg);
-    font-size: 80px;
-    line-height: 80px;
-    width: 360px;
-    text-align: center;
 }
 
 div#netatmo div#outside div.temp {
@@ -162,13 +149,13 @@ div#netatmo div#outside div.humidity
 div#netatmo div#inside div.temp,
 div#netatmo div#outside div.temp
 {
-    left:0px;
+    /* left:0px; */
     top:0px;
 }
 div#netatmo div#inside div.co2,
 div#netatmo div#outside div.pressure
 {
-    left:0px;
+    left:-50px;
     top: 50px;
 }
 div#netatmo div#inside div.humidity,
@@ -194,23 +181,90 @@ div#netatmo div.forecast div.day div.temp {
 }
 
 div#netatmo div.forecast div.day0 {
-	left: 0px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day1 {
-	left: 77px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day2 {
-	left: 154px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day3 {
-	left: 231px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day4 {
-	left: 308px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day5 {
-	left: 385px;
+	right: 0px;
 }
 div#netatmo div.forecast div.day6 {
-	left: 462px;
+	right: 0px;
+}
+
+div#news img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+div#news .headline {
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px;
+    padding-top: 16px;
+    font-size: 30px;
+    line-height: 32px;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.56) 49%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
+}
+div#news .top {
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: -moz-linear-gradient(top, rgba(50,50,50,0.8) 0%, rgba(50,50,50,0.56) 49%,rgba(50,50,50,0) 100%);
+    background: -webkit-linear-gradient(top, rgba(50,50,50,0.8) 0%,rgba(50,50,50,0.56) 49%,rgba(50,50,50,0) 100%);
+    background: linear-gradient(to bottom, rgba(50,50,50,0.8) 0%,rgba(50,50,50,0.56) 49%,rgba(50,50,50,0) 100%);
+}
+
+div.top-right
+{
+    position: absolute !important;
+    top: 0 !important;
+    /* left: 0 !important; */
+    right: 16px !important;
+    font-size: 60px !important;
+    line-height: 60px !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    /* margin-right: 6px !important; */
+}
+
+div.top-left
+{
+    position: absolute !important;
+    top: 11px !important;
+    left: 11px !important;
+    /* right: 16px !important; */
+    font-size: 20px !important;
+    line-height: 20px !important;
+    font-weight: normal !important;
+    text-align: right !important;
+    /* margin-right: 6px !important; */
+}
+
+div.top-right span
+{
+    /* font-size: 60px !important;
+    line-height: 60px !important;
+    font-weight: normal !important; */
+}
+div#netatmo div.weather {
+    text-align: right;
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.57);
 }
