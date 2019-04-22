@@ -1,10 +1,10 @@
 <div class="sliderName">{{light.name}} {{light.state.on}}</div>
-<div class="sliderButton"><button class="off" ng-click="$parent.switchLight(light.id, false)">off</button></div>
+<!-- <div class="sliderButton"><button class="off" ng-click="$parent.switchLight(light.id, false)">off</button></div> -->
 <div class="slider" style="height: 100%">
-    <rzslider rz-slider-model="light.state.bri" rz-slider-options="$parent.briSliderOptions"></rzslider>
+    <rzslider rz-slider-model="light.state.bri" rz-slider-options="light.options"></rzslider>
 </div>
-<div class="sliderButton"><button class="on" ng-click="$parent.switchLight(light.id, true)">on</button></div>
-
+<!-- <div class="sliderButton"><button class="on" ng-click="$parent.switchLight(light.id, true)">on</button></div> -->
+<!-- 
 <div class="additionalSlider" ng-show="light.type == $parent.ctLightType || light.type == $parent.colorLightType">
 
     <rzslider rz-slider-model="light.state.ct" rz-slider-options="light.optionsCt"></rzslider>
@@ -12,4 +12,4 @@
 <div class="additionalSlider" ng-show="light.type == $parent.colorLightType">
 
     <rzslider rz-slider-model="light.state.hue" rz-slider-options="light.optionsHue"></rzslider>
-</div>
+</div> -->
