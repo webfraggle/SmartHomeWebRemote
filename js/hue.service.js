@@ -6,8 +6,12 @@ myApp.factory('hueService', ['$http',function($http) {
     // briTable:[0, 1, 2, 2, 2, 3, 3, 4, 5, 6, 7, 8, 10, 11, 13, 16, 19, 23,
     //   27, 32, 38, 45, 54, 64, 76, 91, 108, 128, 152, 181, 215, 254],
     lights:[],
+    groups:[],
+    rooms:[],
     busy: false,
     onChange:function()
+    {},
+    onChangeGroups:function()
     {},
     getNearestBriId:function(v)
     {
@@ -122,6 +126,32 @@ myApp.factory('hueService', ['$http',function($http) {
           
         };
         $this.onChange();
+      }, function errorCallback(response) {
+        console.log(response.status);
+        
+      });
+    },
+    updateGroups:function()
+    {
+      var $this = this;
+      $http({
+        method : 'GET',
+        url : this.url+'groups'
+      }).then(function successCallback(response) {
+        console.log(response);
+        $this.groups = [];
+        $this.rooms = [];
+        for (var groupNr in response.data)
+        {
+          var t = response.data[groupNr];
+          $this.groups.push(t);
+          if (t.type == "Room")
+          {
+            $this.rooms.push(t);
+          }
+          
+        };
+        $this.onChangeGroups();
       }, function errorCallback(response) {
         console.log(response.status);
         

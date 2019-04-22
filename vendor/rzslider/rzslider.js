@@ -1898,6 +1898,7 @@
        * @returns {undefined}
        */
       onDragStart: function(pointer, ref, event) {
+        console.log(event);
         var position = this.getEventPosition(event);
         this.dragging = {
           active: true,

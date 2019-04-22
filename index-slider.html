@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" ng-app="huedisplay"  ng-controller="AppCtrl">
+	<head>
+		<meta charset="utf-8">
+		<title>SmartHome Display</title>
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,900' rel='stylesheet' type='text/css'> -->
+		<!-- <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=Catamaran:700,400,300" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.css">
+		<link rel="stylesheet" href="css/owfont-regular.min.css">
+		<link rel="stylesheet" href="css/app-slider.css">
+		<link rel="stylesheet" href="css/fritz.css">
+		<link rel="stylesheet" href="css/circle.css">
+		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
+		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
+		<link rel="stylesheet" href="css/overwrites.css">
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-touch.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.8.0/rzslider.js"></script> -->
+		<script src="vendor/rzslider/rzslider.js"></script>
+		<!-- <script src="vendor/angular-long-press.min.js"></script> -->
+		<script src="js/config.js"></script>
+		<script src="js/global-functions.js"></script>
+		
+		<script src="js/app-slider.js"></script>
+		<script src="js/lamp.directive.js"></script>
+		<script src="js/hue.service.js"></script>
+		<script src="js/lg.service.js"></script>
+		<script src="js/hue.controller.js"></script>
+		<script src="js/time.controller.js"></script>
+		<script src="js/tado.controller.js"></script>
+		<script src="js/netatmo.controller.js"></script>
+		<!-- <script src="js/lights.controller.js"></script> -->
+		<script src="js/tv.controller.js"></script>
+		<script src="js/fritz.controller.js"></script>
+		<!-- <script src="js/overview.controller.js"></script> -->
+		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		 <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+		 
+		 <!-- Optional - Adds useful class to manipulate icon font display -->
+		 <link rel="stylesheet" href="css/helper.css">
+
+
+
+	</head>
+	<body ng-style="bodyStyle">
+		<!-- <div id="nav" style="display: none">
+			<button ng-click="toggleState('heater')">Überblick</button>
+			<button ng-click="toggleState('hue')">Hue</button>
+		</div> -->
+	<div id="hue" ng-controller="HueCtrl">
+        <div id="rooms">
+        <div ng-repeat="room in rooms" class="sliderItem clearfix " ng-show="room.lights.length > 0">
+            <div class="Room">
+                {{room.name}}
+
+            </div>
+        </div>
+    </div>
+		<div id="sliders">
+				
+				<div ng-repeat="light in lights" class="sliderItem clearfix" style="float: left; height: 300px;">
+					<hue-lamp-sliders light="light"></hue-lamp-sliders>
+					
+
+				</div>
+				
+				
+		</div>
+	</div>
+	<div id="time" ng-controller="TimeCtrl" style="display: none;"><div class="clock">{{time | date:'HH:mm'}}</div><div class="date">{{time | date:'dd.MM.yyyy'}}</div></div>
+	<div id="tado" ng-controller="TadoCtrl" ng-style="bgStyle" style="display: none;">
+		<div class="tempIst"><span ng-bind-html="heaterTemp | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span></div>
+		<div class="tempSoll" ng-show="heaterSollTemp > 0">{{heaterSollTemp | number:0}}<span class="grad">&deg;C</span></div>
+		<div class="tempSoll" ng-show="heaterSollTemp == 0">AUS</div>
+		<div class="up" ng-click="setTemp(1)"><span class="pe-7s-angle-up-circle"></span></div>
+		<div class="down" ng-click="setTemp(-1)"><span class="pe-7s-angle-down-circle"></span></div>
+	
+		<div class="auto" ng-click="setTempAuto()" ng-style="autoBtnStyle">Auto</div>
+		<div class="icon" ng-show="tadoMode == 'HOME' && !overlayType"><span class="pe-7s-home"></span></div>
+		<div class="icon" ng-show="overlayType == 'MANUAL'"><img src="img/One-Finger-icon-black.png"></div>
+
+		<div class="heatingPower"><img ng-src="img/tadoprozent/{{powerImg}}.png" /></div>
+		<!-- <div>{{tadoMode}} {{overlayType}}</div> -->
+	</div>
+	<div id="netatmo" ng-controller="NetatmoCtrl" style="display: none;">
+			<div id="inside" class="tempView">
+				<div class="temp"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
+				<div class="subvalues">
+				<div class="co2 subvalue">{{inside.CO2 | number:0}}<span class="grad">ppm</span></div>
+				<div class="humidity subvalue">{{inside.Humidity | number:0}}<span class="grad">%</span></div>
+			</div>
+			</div>
+			<div id="outside" class="tempView">
+				<div class="temp"><span ng-bind-html="outside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':outside.temp_trend=='up','pe-7s-angle-down':outside.temp_trend=='down','pe-7s-angle-right':outside.temp_trend=='stable'}"></span></div>
+				<div class="subvalues">
+					<div class="humidity subvalue">{{outside.Humidity | number:0}}<span class="grad">%</span></div>
+					<div class="pressure subvalue">{{inside.Pressure | number:0}}<span class="grad">mbar</span></div>
+				</div>	
+			</div>
+			<div class="weather"><i class="owf" ng-class="weatherIcon"></i></div>
+			<div class="forecast clearfix">
+				<div class="day" ng-repeat="day in forecast | limitTo:5">
+					<div>{{day.dt*1000 | date:'EEE, dd.MM.' | dayTranslate }}</div>
+					<!-- <div>{{day.dt*1000 | date:'dd.MM.' }}</div> -->
+					<div class="icon"><i class="owf" ng-class="'owf-'+day.weather[0].id"></i></div>
+					<div class="temp">{{day.temp.day | number:0 }}&deg;</div>
+				</div>
+			</div>
+			<!-- <div id="heaterTemp" class="tempView"><div>Heizung Ist</div>{{heaterTemp | number:1}}<span class="grad">&deg;C</span></div> -->
+			<!-- <div id="heaterSollTemp" class="tempView"><div>Heizung Soll</div>{{heaterSollTemp | number:1}}<span class="grad">&deg;C</span></div> -->
+	</div>
+	
+	
+	
+	
+	
+	<div id="fritz" ng-controller="FritzCtrl" >
+		<div class="btn drittel smaller" ng-click="toggleVisibility()">
+				<div class="title">Internet</div>
+				
+				<div class="speedImage">
+						<img ng-src="{{imageSrc}}" />
+					
+			  </div>
+		</div>
+
+		<div id="fritzControl" ng-show="visible">
+			<div class="pictureFrame" scrolling="no">
+				<iframe src="https://www.ketzler.de/sh/pictureFrame/settings.html"></iframe>
+			</div>
+
+			<div class="audio close pe-7s-close-circle" ng-click="toggleVisibility()">
+			</div>
+				
+			</div>
+	</div>
+
+		
+	</body>
+</html>

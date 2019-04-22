@@ -1,23 +1,20 @@
 
 angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
 	
-	$scope.ip = '192.168.178.26';
-	$scope.key = '87wTw9H651KevYIWhQl2cw7K8KioqN4eLGe0N1Fv';
-	$scope.url = 'http://'+$scope.ip+'/api/'+$scope.key+'/';
 	$scope.lights = [];
+	$scope.rooms = hueService.rooms;
+	$scope.light = hueService.lights;
 
-	$scope.ctLightType = 'Color temperature light';
-	$scope.colorLightType = 'Extended color light';
 
-	$scope.test = 50;
 
-	console.log(hueService);
+	console.log('SERVICE', hueService);
 
 
 	$scope.briSliderOptions = {
 		    floor: 0,
 		    ceil: 254,
-		    vertical: false
+				vertical: true,
+				onlyBindHandles: true
 		};
 	$scope.ctSliderOptions = {
 		    floor: 153,
@@ -38,12 +35,48 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 
 		    vertical: false
 		};
+
+		$scope.update = function()
+    {
+        console.log('HUE Update');
+        hueService.update();
+    }
+    $scope.delayedUpdate = function()
+    {
+        $timeout($scope.update,150);
+    }
+    $scope.update();
+    $interval(function(){
+        	$scope.update();
+        },1000);
 	$scope.init = function() {
 		console.log('start HueCtrl');
-		$scope.updateLights();
 		
 
 	};
+
+	$scope.handleChange = function()
+	{
+			console.log(hueService.lights);
+			$scope.lights = hueService.lights;
+			$timeout(function(){});
+	}
+
+	hueService.onChange = $scope.handleChange;
+
+	$scope.handleChangeGroups = function()
+	{
+			console.log('Groups changed');
+			console.log(hueService.groups)
+			console.log(hueService.rooms);
+			$scope.rooms = hueService.rooms;
+			$timeout(function(){});
+	}
+
+	hueService.onChangeGroups = $scope.handleChangeGroups;
+	hueService.updateGroups();
+
+	//--------
 	
 	$scope.updateLights = function()
 	{
