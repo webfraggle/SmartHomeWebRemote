@@ -14,7 +14,11 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 		    floor: 0,
 		    ceil: 254,
 				vertical: true,
-				onlyBindHandles: true
+				onlyBindHandles: true,
+				keyboardSupport:false,
+				noSwitching: true,
+				hideLimitLabels: true,
+				hidePointerLabels: true
 		};
 	$scope.ctSliderOptions = {
 		    floor: 153,
@@ -66,12 +70,28 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 				for (var lightNr in hueService.lights)
 				{
 					t = angular.copy(hueService.lights[lightNr]);
+					//t = {};
 					t.options = angular.copy($scope.briSliderOptions);
+					t.busy = false;
 					t.options.onChange = $scope.setBrightness;
+					t.options.onStart = $scope.onStart;
+					t.options.onEnd = $scope.onEnd;
 					t.options.id = t.id;
 					$scope.lights.push(t);
 				}
 			}
+
+			for (var lightNr in hueService.lights)
+			{
+				remoteLight = hueService.lights[lightNr];
+				var localLight = $scope.getLightById(remoteLight.id);
+				if (!localLight.busy)
+				{
+					localLight.state.bri = remoteLight.state.bri;
+				}
+				localLight.state.on = remoteLight.state.on;
+			}
+
 			$timeout(function(){});
 	}
 
@@ -88,56 +108,55 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 
 	hueService.onChangeGroups = $scope.handleChangeGroups;
 	hueService.updateGroups();
-
+	$scope.onStart = function(id)
+	{
+		// console.log('onStart id:', id);
+		$scope.getLightById(id).busy = true;
+	}
+	$scope.onEnd = function(id)
+	{
+		// console.log('onEnd id:', id);
+		localLight = $scope.getLightById(id);
+		hueService.setBrightness(localLight.id,localLight.state.bri);
+		if (localLight.state.bri <=0)
+		{
+			hueService.switchLight(localLight.id, false);
+		}
+		localLight.busy = false;
+	}
 
 	$scope.setBrightness = function(id)
 	{
-		console.log('id:', id);
+		console.log('setBrightness id:', id);
 		var localLight = $scope.getLightById(id);
-		//var remoteLight = hueService.getLightById(id);
-		console.log(localLight.state.bri);
-		if (!hueService.busy)
+		var remoteLight = hueService.getLightById(id);
+		// console.log('remoteLight', remoteLight.busy);
+		if (!remoteLight.busy)
 		{
-
 			hueService.setBrightness(localLight.id,localLight.state.bri);
 		}
 		if (localLight.state.bri <=0)
 		{
 			hueService.switchLight(localLight.id, false);
 		}
-		return;
-		var theLight = $scope.getLightById(id);
-		if (theLight.busy) return;
-		
-		theLight.busy = true;
-		$http({
-			method : 'PUT',
-			url : $scope.url+'lights/'+theLight.id+'/state',
-			data : {"on": true, "bri":theLight.state.bri}
-		}).then(function successCallback(response) {
-			// console.log(response.data);
-			for (i in response.data)
-			{
-				if(response.data[i].success)
-				{
-					for (str in response.data[i].success)
-					{
-						
-						// console.log(str);
-						var id = str.replace(/[^0-9\.]/g, '');
-						// console.log('resp id', id);
-						var theLight = $scope.getLightById(id);
-						theLight.busy = false;
-					}
-					
-				}
-			}
-			
-		}, function errorCallback(response) {
-			console.log(response.status);
-			
-		});
-		
+	};
+
+	$scope.toggleLight = function(id)
+    {
+			light = hueService.getLightById(id);
+			console.log('toggle',id,light);	
+				v = !light.state.on;
+        hueService.switchLight(light.id,v);
+        $scope.delayedUpdate();
+    }
+
+	$scope.getLightById = function(id)
+	{
+		id = ''+id;
+		for(var i=0,j=$scope.lights.length; i<j; i++){
+		  if ($scope.lights[i].id == id) return $scope.lights[i];
+		  
+		};
 	};
 
 	//--------
@@ -189,26 +208,9 @@ angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $in
 		});
 	};
 	
-	$scope.getLightById = function(id)
-	{
-		id = ''+id;
-		for(var i=0,j=$scope.lights.length; i<j; i++){
-		  if ($scope.lights[i].id == id) return $scope.lights[i];
-		  
-		};
-	};
+
 	
-	$scope.switchLight = function(id, what)
-	{
-		
-		  var theLight = $scope.getLightById(id);
-		  console.log(theLight);
-		  $http({
-			method : 'PUT',
-			url : $scope.url+'lights/'+theLight.id+'/state',
-			data : {"on": what}
-		});
-	};
+
 	$scope.switchAllLights = function(what)
 	{
 		

@@ -1,13 +1,21 @@
 .rzslider .rz-pointer:after { 
 	width: 28px;
     height: 28px;
-    border-radius: 14px;
+	border-radius: 14px;
+	display: none;
 }
 
 .rzslider .rz-pointer {
-	width: 52px;
-	height: 52px;
-	border-radius: 26px;
+	width: 100px;
+    height: 52px;
+    border-radius: 0;
+	/* background: transparent; */
+	background-color: #000;
+    border: 1px solid cornflowerblue;
+}
+.rzslider.rz-vertical .rz-pointer
+{
+	left: -30px !important;
 }
 
 .rzslider .rz-bar-wrapper {

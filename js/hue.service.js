@@ -30,12 +30,17 @@ myApp.factory('hueService', ['$http',function($http) {
     },
     switchLight:function(id,state)
     {
-      
+      console.log('switchLight', id,state);
       $http({
         method : 'PUT',
         url : this.url+'lights/'+id+'/state',
         data : {"on": state}
-      })
+      }).then(function successCallback(response) {
+        console.log('switchLight response', response);
+      }, function errorCallback(response) {
+        console.log('switchLight Erros response', response);
+        
+      });
     },
     setBrightness:function(id,bri)
     {
@@ -46,15 +51,20 @@ myApp.factory('hueService', ['$http',function($http) {
       // var bri2 = this.briTable[pos];
       // if ($this.busy) return;
       $this.busy = true;
-      console.log(id,bri);
+      $this.getLightById(id).busy = true;
+      // console.log(id,bri);
 
       $http({
         method : 'PUT',
         url : this.url+'lights/'+id+'/state',
-        data : {"on": true, "bri":bri}
+        data : {"on": true, "bri":bri},
+        id: id
       }).then(function successCallback(response) {
+        // console.log('response', response.config.id);
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
       }, function errorCallback(response) {
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
         
       });
@@ -63,15 +73,19 @@ myApp.factory('hueService', ['$http',function($http) {
     {
       var $this = this;
       $this.busy = true;
+      $this.getLightById(id).busy = true;
       console.log(id,ct);
 
       $http({
         method : 'PUT',
         url : this.url+'lights/'+id+'/state',
-        data : {"on": true, "ct":ct}
+        data : {"on": true, "ct":ct},
+        id: id
       }).then(function successCallback(response) {
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
       }, function errorCallback(response) {
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
         
       });
@@ -81,15 +95,19 @@ myApp.factory('hueService', ['$http',function($http) {
     {
       var $this = this;
       $this.busy = true;
+      $this.getLightById(id).busy = true;
       console.log(id,hue);
 
       $http({
         method : 'PUT',
         url : this.url+'lights/'+id+'/state',
-        data : { "colormode": 'hue', "hue":hue, "sat":254}
+        data : { "colormode": 'hue', "hue":hue, "sat":254},
+        id: id
       }).then(function successCallback(response) {
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
       }, function errorCallback(response) {
+        $this.getLightById(response.config.id).busy = false;
         $this.busy = false;
         
       });

@@ -166,6 +166,12 @@
       this.scope = scope;
 
       /**
+       * Saved Multiltouch identifier
+       * @type {number}
+       */
+      this.touchIdentifier = null;
+
+      /**
        * The slider inner low value (linked to rzSliderModel)
        * @type {number}
        */
@@ -1519,7 +1525,19 @@
         if (event[clientXY] !== undefined) {
           return event[clientXY];
         }
+        if (this.touchIdentifier !== null)
+        {
+          for (var i = 0; i < event.touches.length; i++) {
+            var e = event.touches[i];
+            if (e.identifier == this.touchIdentifier)
+            {
+              return e[clientXY];
+            }
+            
+          }
+        } 
 
+        // console.log('getEventXY',this.options.id, this.touchIdentifier, event.targetTouches[0]);
         return event.originalEvent === undefined ?
           event.touches[0][clientXY] : event.originalEvent.touches[0][clientXY];
       },
@@ -1547,6 +1565,7 @@
        * @return {{moveEvent: string, endEvent: string}}
        */
       getEventNames: function(event) {
+        // console.log(event);
         var eventNames = {
           moveEvent: '',
           endEvent: ''
@@ -1616,26 +1635,26 @@
           barMove = this.onMove;
         }
 
-        if (!this.options.onlyBindHandles) {
-          this.selBar.on('mousedown', angular.bind(this, barStart, null, barTracking));
-          this.selBar.on('mousedown', angular.bind(this, barMove, this.selBar));
-        }
+        // if (!this.options.onlyBindHandles) {
+        //   this.selBar.on('mousedown', angular.bind(this, barStart, null, barTracking));
+        //   this.selBar.on('mousedown', angular.bind(this, barMove, this.selBar));
+        // }
 
-        if (this.options.draggableRangeOnly) {
-          this.minH.on('mousedown', angular.bind(this, barStart, null, barTracking));
-          this.maxH.on('mousedown', angular.bind(this, barStart, null, barTracking));
-        } else {
-          this.minH.on('mousedown', angular.bind(this, this.onStart, this.minH, 'lowValue'));
-          if (this.range) {
-            this.maxH.on('mousedown', angular.bind(this, this.onStart, this.maxH, 'highValue'));
-          }
-          if (!this.options.onlyBindHandles) {
-            this.fullBar.on('mousedown', angular.bind(this, this.onStart, null, null));
-            this.fullBar.on('mousedown', angular.bind(this, this.onMove, this.fullBar));
-            this.ticks.on('mousedown', angular.bind(this, this.onStart, null, null));
-            this.ticks.on('mousedown', angular.bind(this, this.onTickClick, this.ticks));
-          }
-        }
+        // if (this.options.draggableRangeOnly) {
+        //   this.minH.on('mousedown', angular.bind(this, barStart, null, barTracking));
+        //   this.maxH.on('mousedown', angular.bind(this, barStart, null, barTracking));
+        // } else {
+        //   this.minH.on('mousedown', angular.bind(this, this.onStart, this.minH, 'lowValue'));
+        //   if (this.range) {
+        //     this.maxH.on('mousedown', angular.bind(this, this.onStart, this.maxH, 'highValue'));
+        //   }
+        //   if (!this.options.onlyBindHandles) {
+        //     this.fullBar.on('mousedown', angular.bind(this, this.onStart, null, null));
+        //     this.fullBar.on('mousedown', angular.bind(this, this.onMove, this.fullBar));
+        //     this.ticks.on('mousedown', angular.bind(this, this.onStart, null, null));
+        //     this.ticks.on('mousedown', angular.bind(this, this.onTickClick, this.ticks));
+        //   }
+        // }
 
         if (!this.options.onlyBindHandles) {
           this.selBar.on('touchstart', angular.bind(this, barStart, null, barTracking));
@@ -1687,12 +1706,21 @@
        * @returns {undefined}
        */
       onStart: function(pointer, ref, event) {
+        // console.log('onStart', event.targetTouches[0]);
         var ehMove, ehEnd,
-          eventNames = this.getEventNames(event);
-
+        eventNames = this.getEventNames(event);
+        
         event.stopPropagation();
         event.preventDefault();
-
+        // saving the first touchIdentifier
+        this.touchIdentifier = null;
+        if (event.targetTouches)
+        {
+          if (event.targetTouches.length)
+          {
+            this.touchIdentifier = event.targetTouches[0].identifier;
+          }
+        }
         // We have to do this in case the HTML where the sliders are on
         // have been animated into view.
         this.calcViewDimensions();
@@ -1726,6 +1754,23 @@
        * @returns {undefined}
        */
       onMove: function(pointer, event, fromTick) {
+        // console.log('onMove',this.options.id, this.touchIdentifier, event);
+        // console.log('onMove',this.options.id, this.touchIdentifier,fromTick);
+        // if (this.touchIdentifier !== null)
+        // {
+        //   if (event.changedTouches)
+        //   {
+        //     if (event.changedTouches.length)
+        //     {
+        //       // console.log(event.changedTouches[0].identifier, this.touchIdentifier);
+        //       if (event.changedTouches[0].identifier != this.touchIdentifier){
+        //         // console.log('raus');
+        //         //return;
+        //       }
+        //     }
+        //   }
+        // }
+
         var newPos = this.getEventPosition(event),
           newValue,
           ceilValue = this.options.rightToLeft ? this.minValue : this.maxValue,
@@ -1753,6 +1798,20 @@
        * @returns {undefined}
        */
       onEnd: function(ehMove, event) {
+
+        // console.log('onEnd',this.options.id, this.touchIdentifier,event.changedTouches);
+        // only react if this is my touchPoint
+        if (this.touchIdentifier !== null)
+        {
+          if (event.changedTouches)
+          {
+            if (event.changedTouches.length)
+            {
+              if (event.changedTouches[0].identifier != this.touchIdentifier) return;
+            }
+          }
+        }
+
         var moveEventName = this.getEventNames(event).moveEvent;
 
         if (!this.options.keyboardSupport) {
@@ -1761,6 +1820,7 @@
           this.tracking = '';
         }
         this.dragging.active = false;
+        this.touchIdentifier = null;
 
         $document.off(moveEventName, ehMove);
         this.callOnEnd();
@@ -1898,7 +1958,7 @@
        * @returns {undefined}
        */
       onDragStart: function(pointer, ref, event) {
-        console.log(event);
+        // console.log(event);
         var position = this.getEventPosition(event);
         this.dragging = {
           active: true,
@@ -1965,6 +2025,7 @@
        * @returns {undefined}
        */
       onDragMove: function(pointer, event) {
+        // console.log(event);
         var newPos = this.getEventPosition(event),
           newMinValue, newMaxValue,
           ceilLimit, flrLimit,

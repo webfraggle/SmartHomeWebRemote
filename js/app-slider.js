@@ -4,12 +4,12 @@ var myApp = angular.module('huedisplay', [
 	// 'uiSwitch',
 	'ngTouch',
 	// 'pr.longpress',
-	'gui.time',
-	'gui.netatmo',
+	// 'gui.time',
+	// 'gui.netatmo',
 	// 'gui.lights',
 	// 'gui.tv',
-	'gui.fritz',
-	'gui.tado',
+	// 'gui.fritz',
+	// 'gui.tado',
 
 	'rzModule'
 ]).directive('myTouchstart', [function() {
@@ -82,20 +82,20 @@ var myApp = angular.module('huedisplay', [
 	$rootScope.disabled = [];
 
 	$scope.state = 'overview';
-	$scope.bodyStyle = {'transform':'scale(1)'};
+	// $scope.bodyStyle = {'transform':'scale(1)'};
 
-	$scope.resize = function()
-	{
-		console.log(window);
-		if (window.screen.availWidth < 480)
-		{
-			scale = window.screen.availWidth/480; 
-			$scope.bodyStyle.transform = 'scale('+scale+')';
-			console.log('resizing');
-			console.log($scope.bodyStyle);
-		}
-	}
-	$scope.resize();
+	// $scope.resize = function()
+	// {
+	// 	console.log(window);
+	// 	if (window.screen.availWidth < 480)
+	// 	{
+	// 		scale = window.screen.availWidth/480; 
+	// 		$scope.bodyStyle.transform = 'scale('+scale+')';
+	// 		console.log('resizing');
+	// 		console.log($scope.bodyStyle);
+	// 	}
+	// }
+	// $scope.resize();
 	// $scope.toggleState = function(newState)
 	// {
 	// 	$scope.state = newState;

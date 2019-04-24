@@ -17,7 +17,8 @@ body, html {
 	/* overflow: hidden;
 	overflow-x:hidden;
 	overflow-y:hidden;
-	position: fixed; */
+    position: fixed; */
+    height: 500px;
 }
 html {
 	/* height: 300px; */
@@ -84,13 +85,16 @@ button.on {
 button.off {
 	background-color: #f44336;
 }
+div#hue {
+    margin: 10px;
+}
 
 div.sliderItem {
     /* float: left; */
-	background-color: #323232;
+	background-color: #000;
 	margin-bottom: 5px;
     padding: 5px;
-    height: 400px;
+    height: 450px;
     white-space: normal;
     position: relative;
     width: 100px;
@@ -98,18 +102,30 @@ div.sliderItem {
 }
 div.sliderItem > div.sliderName {
 	width: 100%;
+	color: cornflowerblue;
+	position: absolute;
+	-webkit-transform-origin: left top;
+	transform-origin: left top;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    font-size: 15px;
+    left: 0;
+    bottom: 50px;
+	width: 300px;
+	
+	
 }
 div.sliderItem > div {
 	/* float: left; */
 }
-div.sliderItem button {
+
+
+div.sliderItem .switchContainer {
 	padding: 5px 5px;
 	width: 52px;
 	height: 53px;
-	margin-top: 46px;
-}
-div.sliderItem button.on {
-	margin-left: 10px;
+    position: absolute;
+    top: 400px;
 }
 
 div.sliderItem div.slider {
@@ -118,6 +134,7 @@ div.sliderItem div.slider {
     position: absolute;
     top: 0;
     left: 10px;
+    height: 400px;
 }
 div.sliderItem div.sliderButton {
 	width: 10%;
