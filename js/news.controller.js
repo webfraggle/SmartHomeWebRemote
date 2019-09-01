@@ -52,6 +52,6 @@ angular.module('gui.news', []).controller('NewsCtrl', function NewsCtrl($scope, 
     $interval(function(){
 		$scope.change();
 		
-    },10*1000);
+    },5*1000);
 
 });

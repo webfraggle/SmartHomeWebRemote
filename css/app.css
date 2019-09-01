@@ -104,7 +104,40 @@ div.sliderItem div.additionalSlider {
 	padding-left: 10%;
 	padding-right: 10%;
 }
+div#infoPanel {
+	width: 480px;
+	height: 260px;
+	overflow: hidden;
+}
+div#news {
+	position: absolute;
+	height: 254px;
+	border-radius: 10px;
+	width: 480px;
+	top: 3px;
+	overflow: hidden;
+}
+div#news img {
+    width: 100%;
+    height: auto;
+	position: absolute;
+	border-radius: 10px;
+}
 
+div#news .headline {
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 6px;
+    padding-top: 16px;
+    font-size: 25px;
+    line-height: 27px;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.56) 49%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
+}
 
 div#netatmo div.tempView
 {
@@ -203,8 +236,9 @@ div#netatmo div#inside {
 
 div#netatmo {
 	position: relative;
-	margin-top: 45px;
-	margin-bottom: 10px;
+	top: 45px;
+	/* margin-top: 45px; */
+	/* margin-bottom: 10px; */
 }
 div#netatmo div.forecast {
 	clear: both;

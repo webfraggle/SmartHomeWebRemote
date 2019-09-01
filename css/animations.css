@@ -1,0 +1,80 @@
+body {
+    /* perspective: 1000px; */
+}
+
+#infoPanel {
+    perspective: 1000px;
+    
+}
+.funky-show-hide {
+    transform-origin: center center -180px;
+    transition: transform 0.5s ease 0.0s, opacity 0.1s ease 0.0s;
+    transform: rotateX(0deg);
+    opacity: 1;
+}
+
+.funky-show-hide.ng-hide-add {
+    transition: transform 0.5s ease 0.0s, opacity 0.1s linear 0.0s;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  
+  .funky-show-hide.ng-hide-add.ng-hide-add-active {
+    transition: transform 0.5s ease, opacity 0.1s linear 0.2s;
+    transform: rotateX(-90deg);
+    opacity: 0;
+}
+
+.funky-show-hide.ng-hide-remove {
+    transform: rotateX(90deg);
+    opacity: 0;
+}
+
+.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+
+  .swap-animation.ng-enter {
+    transition:0.5s ease-out all;
+  } 
+  .swap-animation.ng-leave {
+    transition:0.5s ease-in all;
+  }
+  .swap-animation.ng-enter {
+    bottom:-100px !important;
+  }
+  .swap-animation.ng-enter-active {
+    bottom:0px !important;
+  }
+  .swap-animation.ng-leave {
+    bottom:0px;
+  }
+  .swap-animation.ng-leave-active {
+    bottom:-100px !important;
+  }
+
+  .blend-animation
+  {
+      opacity: 1;
+  }
+  .blend-animation.ng-enter {
+    transition:opacity linear 0.7s;
+    /* display: none; */
+    background: transparent;
+  }
+  .blend-animation.ng-leave {
+    transition:opacity linear 0.5s;
+  }
+  .blend-animation.ng-enter {
+    opacity: 0;
+  }
+  .blend-animation.ng-enter-active {
+    opacity: 1;
+  }
+  .blend-animation.ng-leave {
+    opacity: 1;
+  }
+  .blend-animation.ng-leave-active {
+    opacity: 0.0;
+  }
