@@ -4,7 +4,7 @@ body, html {
 	font-family: 'Catamaran', 'Open Sans', sans-serif;
 	background-color: #000;
 	color: #fff;
-	font-size: 15pt;
+	font-size: 18pt;
 	font-weight: 300;
 	/*overflow: hidden;*/
 	/*background-color: rgb(50,50,50);*/
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-	width: 480px;
+	width: 600px;
 	/* height: 800px; */
 	transform-origin: top left;
 	/* background-color: aqua; */
@@ -44,18 +44,18 @@ body {
 }
 
 div#sliders {
-	margin: 15px;
+	margin: 18px;
 }
 
 button {
     background-color: #323232;
     border: none;
     color: white;
-    padding: 20px 48px;
+    padding: 25px 60px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -69,8 +69,8 @@ button.off {
 div.sliderItem {
 	clear:both;
 	background-color: #323232;
-	margin-bottom: 5px;
-	padding: 5px;
+	margin-bottom: 6px;
+	padding: 6px;
 }
 div.sliderItem > div.sliderName {
 	width: 100%;
@@ -79,13 +79,13 @@ div.sliderItem > div {
 	float: left;
 }
 div.sliderItem button {
-	padding: 5px 5px;
-	width: 52px;
-	height: 53px;
-	margin-top: 46px;
+	padding: 6px 6px;
+	width: 65px;
+	height: 65px;
+	margin-top: 57px;
 }
 div.sliderItem button.on {
-	margin-left: 10px;
+	margin-left: 12px;
 }
 
 div.sliderItem div.slider {
@@ -105,23 +105,23 @@ div.sliderItem div.additionalSlider {
 	padding-right: 10%;
 }
 div#infoPanel {
-	width: 480px;
-	height: 260px;
+	width: 600px;
+	height: 325px;
 	overflow: hidden;
 }
 div#news {
 	position: absolute;
-	height: 254px;
-	border-radius: 10px;
-	width: 480px;
-	top: 3px;
+	height: 317px;
+	border-radius: 12px;
+	width: 600px;
+	top: 4px;
 	overflow: hidden;
 }
 div#news img {
     width: 100%;
     height: auto;
 	position: absolute;
-	border-radius: 10px;
+	border-radius: 12px;
 }
 
 div#news .headline {
@@ -130,10 +130,10 @@ div#news .headline {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    padding: 6px;
-    padding-top: 16px;
-    font-size: 25px;
-    line-height: 27px;
+    padding: 7px;
+    padding-top: 20px;
+    font-size: 31px;
+    line-height: 33px;
     background: -moz-linear-gradient(top, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.56) 49%, rgba(0,0,0,1) 100%);
     background: -webkit-linear-gradient(top, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
     background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.56) 49%,rgba(0,0,0,1) 100%);
@@ -142,15 +142,15 @@ div#news .headline {
 div#netatmo div.tempView
 {
 
-	font-size: 36px;
-	line-height: 30px;
+	font-size: 45px;
+	line-height: 37px;
 	font-weight: 300;
 } 
 
 div#netatmo div.tempView div.temp
 {
-	font-size: 75px;
-	line-height: 45px;
+	font-size: 93px;
+	line-height: 56px;
 	font-weight: bold;
 	position: relative;
 	width: max-content;
@@ -164,7 +164,7 @@ div#netatmo div#inside.tempView div.temp
 div#netatmo div.tempView
 {
 	/* width: 24%; */
-	font-size: 30px;
+	font-size: 37px;
 	/* border-bottom: 1px solid #ccc; */
 	/* border-left: none; */
 	margin: 0px;
@@ -174,7 +174,7 @@ div#netatmo div.tempView
 
 div#netatmo div.tempView
 {
-	font-size: 18px;
+	font-size: 22px;
 }
 div#netatmo .grad {
 	font-size: 41%;
@@ -192,34 +192,34 @@ div#netatmo div.weather {
 	position: absolute;
 	text-align: center;
 	width: 95%;
-	font-size: 70px;
+	font-size: 87px;
 	padding-left: 5%;
 }
 
 div#netatmo span.trend
 {
-	font-size: 42px;
+	font-size: 52px;
 	/* line-height: 41px; */
 	/* float: left; */
 	/* margin-left: -60px; */
 	/* margin-bottom: 15px; */
 	display: block;
 	position: absolute;
-	top: -14px;
-	right: -12px;
+	top: -17px;
+	right: -15px;
 }
 div#netatmo div.subvalue
 {
 	float: left;
 	font-weight: 300;
-	font-size: 30px;
-	margin-right: 10px;
+	font-size: 37px;
+	margin-right: 12px;
 }
 
 div#netatmo div#outside div.subvalue {
 	float: right;
 	margin-right: 0px;
-	margin-left: 10px;
+	margin-left: 12px;
 }
 div#netatmo div#outside div.temp {
 	float: right;
@@ -227,41 +227,41 @@ div#netatmo div#outside div.temp {
 }
 div#netatmo div#outside {
 	float: right;
-	padding-right: 17px;
+	padding-right: 21px;
 }
 div#netatmo div#inside {
-	padding-left: 17px;
+	padding-left: 21px;
 	float: left;
 }
 
 div#netatmo {
 	position: relative;
-	top: 45px;
+	top: 56px;
 	/* margin-top: 45px; */
 	/* margin-bottom: 10px; */
 }
 div#netatmo div.forecast {
 	clear: both;
 	width: 100%;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 18px;
+	padding-bottom: 18px;
 }
 div#netatmo div.forecast div.day {
 	float: left;
 	width: 20%;
-	font-size: 15px;
-	line-height: 15px;
+	font-size: 18px;
+	line-height: 18px;
 }
 div#netatmo div.forecast div.day div {
 	text-align: center;
 }
 div#netatmo div.forecast div.day div.icon {
-	font-size: 37px;
-	margin-top: 10px;
+	font-size: 46px;
+	margin-top: 12px;
 }
 div#netatmo div.forecast div.day div.temp {
-	font-size: 25px;
-	margin-top: 5px;
+	font-size: 31px;
+	margin-top: 6px;
 }
 
 div#overview div.row
@@ -271,11 +271,11 @@ div#overview div.row
 div#overview div.separator
 {
 	color: #323232;
-	font-size: 20px;
-	margin-bottom: 5px;
+	font-size: 25px;
+	margin-bottom: 6px;
 	/* margin-top: 5px; */
 	padding: 0;
-	padding-top: 15px;
+	padding-top: 18px;
 	clear: both;
 	padding-left: 0;
 
@@ -285,32 +285,32 @@ div#overview div.btn
 {
 	float: left;
 	/* width: 24%; */
-	font-size: 30px;
+	font-size: 37px;
 	border: 1px solid #000;
 	background-color: #121212;
 	margin: 0px;
-	padding: 7px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 9px;
+	padding-left: 25px;
+	padding-right: 25px;
 	font-weight: lighter;
 	text-align: center;
 }
 
 div#overview div.btn.halb
 {
-	width: calc(50% - 42px);
+	width: calc(50% - 52px);
 }
 div#overview div.btn.viertel
 {
-	width: calc(25% - 42px);
+	width: calc(25% - 52px);
 }
 div#overview div.btn.fuenftel
 {
-	width: calc(20% - 42px);
+	width: calc(20% - 52px);
 }
 div#overview div.btn.voll
 {
-	width: calc(100% - 42px);
+	width: calc(100% - 52px);
 }
 
 
@@ -320,38 +320,38 @@ div#time {
 	width: 100%;
 	/* padding-top: 5px; */
 	/* padding-bottom: 10px; */
-	font-size: 92px;
+	font-size: 115px;
 	/* line-height: 48px; */
 	/* background-color: black; */
 	color: white;
 	/* height: 50px; */
 	/* z-index: 100; */
 	/* top: 310px; */
-	margin-top: 3px;
-	margin-bottom: 15px;
+	margin-top: 4px;
+	margin-bottom: 18px;
 }
 div#time div.clock {
 	font-weight: bold;
 	width: 100%;
 	/* float: left; */
 	text-align: center;
-	line-height: 68px;
+	line-height: 85px;
 }
 div#time div.date {
 	width: 100%;
-	font-size: 42px;
-	line-height: 31px;
+	font-size: 52px;
+	line-height: 39px;
 	text-align: center;
 	/* float: right; */
 }
 
 div#tado {
 	/* background-color: #e9a020; */
-	width: 480px;
-	height: 150px;
-	margin-top: 5px;
+	width: 600px;
+	height: 187px;
+	margin-top: 6px;
 	position: relative;
-	border-radius: 10px;
+	border-radius: 12px;
 	color: black;
 }
 
@@ -360,69 +360,69 @@ div#tado div {
 }
 
 div#tado div.tempIst {
-	font-size: 76px;
+	font-size: 95px;
 	font-weight: 900;
-	left: 19px;
+	left: 24px;
 	top: 0px;
-	line-height: 85px;
+	line-height: 106px;
 }
 
 div#tado div.tempSoll {
-	font-size: 45px;
+	font-size: 56px;
 	font-weight: 600;
-	left: 282px;
-	top: 13px;
-	width: 150px;
+	left: 352px;
+	top: 16px;
+	width: 187px;
 	text-align: center;
 }
 
 div#tado div.up {
-	left: 403px;
-	top: 6px;
-	font-size: 65px;
+	left: 503px;
+	top: 7px;
+	font-size: 81px;
 }
 div#tado div.down {
-	left: 242px;
-	top: 6px;
-	font-size: 65px;
+	left: 302px;
+	top: 7px;
+	font-size: 81px;
 }
 
 div#tado div.auto
 {
-	border-radius: 20px;
+	border-radius: 25px;
 	border: 2px solid black;
-	width: 110px;
-	height: 40px;
-	left: 301px;
-	top: 93px;
+	width: 137px;
+	height: 50px;
+	left: 376px;
+	top: 116px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: bold;
-	line-height: 37px;
+	line-height: 46px;
 	background-color: none;
 	color: black;
 }
 
 div#tado div.icon
 {
-	left: 19px;
-	top: 89px;
-	font-size: 44px;
+	left: 24px;
+	top: 111px;
+	font-size: 55px;
 }
 
 div#tado div.icon img
 {
-	height: 41px;
+	height: 51px;
 	width: auto;
 }
 div#tado div.heatingPower {
-	top: 98px;
-	left: 90px;
+	top: 122px;
+	left: 112px;
 }
 
 div#tado div.heatingPower img {
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 }
 
 div#tado .grad {

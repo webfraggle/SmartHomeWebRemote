@@ -112,20 +112,25 @@ var myApp = angular.module('huedisplay', [
 
 	$scope.resize = function()
 	{
-		// console.log(window);
-		if (window.screen.availWidth < 480)
-		{
-			scale = window.screen.availWidth/480; 
-			$scope.bodyStyle.transform = 'scale('+scale+')';
-			console.log('resizing');
-			console.log($scope.bodyStyle);
-		}
+		console.log('resizing', window.screen.availWidth, window.screen.availHeight);
 		if (window.screen.availWidth == 600)
 		{
-			$scope.bodyStyle.transform = 'scale(1.25)';
+			return;
 		}
+		// console.log(window);
+		if (window.screen.availWidth < 600 || window.screen.availHeight < 1024)
+		{
+			scaleX = window.screen.availWidth/600;
+			scaleY = window.screen.availHeight/1024;
+			scale = scaleX < scaleY ? scaleX : scaleY;
+			$scope.bodyStyle.transform = 'scale('+scale+')';
+			console.log("scaleX/Y, scale", scaleX, scaleY, scale);
+		}
+		
 	}
 	$scope.resize();
+	window.addEventListener("resize",$scope.resize);
+	window.addEventListener("orientationchange",$scope.resize)
 	$scope.toggle = function()
     {
 		//console.log($scope.states);

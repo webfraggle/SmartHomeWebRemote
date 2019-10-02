@@ -19,11 +19,19 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     $scope.fernseh.lightIds = [1,2];
     $scope.fernseh.title = 'Fernsehlampe';
     
-    $scope.go = angular.copy($scope.lampTemplate);
-    $scope.go.lightIds = [9];
-    $scope.go.title = 'Ambiente';
+    $scope.ambiente = angular.copy($scope.lampTemplate);
+    $scope.ambiente.lightIds = [9];
+    $scope.ambiente.title = 'Ambiente';
 
-    $scope.lights = [$scope.fernseh, $scope.decke, $scope.go];
+    $scope.go = angular.copy($scope.lampTemplate);
+    $scope.go.lightIds = [4];
+    $scope.go.title = 'GO';
+
+    $scope.ck = angular.copy($scope.lampTemplate);
+    $scope.ck.lightIds = [8];
+    $scope.ck.title = 'Christophs Lampe';
+
+    $scope.lights = [$scope.fernseh, $scope.decke, $scope.ambiente, $scope.go, $scope.ck];
     $scope.timer = null;
     $scope.timeout = 4000;
     $scope.enabled = true;
@@ -175,17 +183,18 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     }
     $scope.touchMove = function(e)
     {
-        var von = 107;
-        var bis = 480;
+        var von = 100;
+        var bis = 620;
         $timeout.cancel($scope.timer);
         $scope.timer = $timeout($scope.hideBrightness,$scope.timeout);
 
         var y = event.touches[0].clientY;
+        // console.log(y);
         if (y < von) y = von;
         if (y > bis) y = bis;
         var factor = (y-von)/(bis-von);
         factor = 1-factor;
-        console.log('move', factor);
+        // console.log('move', y, factor);
 
         var eClass = event.target.getAttribute('class');
         if (eClass.indexOf('brightness')!==-1)

@@ -6,9 +6,9 @@ div#lights div.btn{
 	float: left;
 	margin: 1px;
 	background-color: #202020;
-	height: 150px;
+	height: 180px;
 	position: relative;
-	border-radius: 10px;
+	border-radius: 12px;
 }
 
 div#lights div.halb {
@@ -18,83 +18,85 @@ div#lights div.drittel {
 	width: calc(33.3% - 2px);
 }
 div#lights div.btn.smaller {
-	height:114px;
+	height:142px;
 }
 div#lights div.btn div{
 	text-align: center;
 }
 div#lights div.btn div.bigTitle{
-    font-size: 32px;
-    margin-top: 15px;
-    line-height: 29px;
+    font-size: 40px;
+    margin-top: 18px;
+    line-height: 36px;
 }
 div#lights div.btn.selected{
 	background-color: #295a28;
 }
 
 div#lights div.btn div.more{
-	font-size: 80px;
-	line-height: 124px;
+	font-size: 100px;
+	line-height: 155px;
 }
 div#lights div.btn div.title{
     color: #ccc;
-    font-size: 15px;
+    font-size: 19px;
     margin-bottom: 1px;
-    margin-top: 5px;
+    margin-top: 6px;
 }
 div#lights div.btn div.light{
 	position: absolute;
 	width: 100%;
-	top: 4px;
-	font-size: 19px;
-	right: 4px;
+	top: 5px;
+	font-size: 24px;
+	right: 5px;
 	text-align:  right;
 }
 
 div#lights div.btn div.lightstate{
 	position: absolute;
-	/* width: 100%; */
-	top: 88px;
-	left: 54px;
-	font-size: 42px;
+    /* width: 100%; */
+    top: 97px;
+    left: 67px;
+    font-size: 52px;
+    transform: scale(1.25);
+    transform-origin: top left;
 }
 
 div#lights div.btn div.lightstate img{
-	width: 43px;
-	height: 43px;
+	width: 54px;
+	height: 54px;
 }
 
 div#lights div.btn div.colorstate {
-	position: absolute;
-	/* width: 100%; */
-	top: 96px;
-	left: 62px;
-	width: 34px;
-	height: 34px;
-	border-radius: 16px;
+    position: absolute;
+    /* width: 100%; */
+    top: 106px;
+    left: 76px;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
     background-color: #ccc;
     pointer-events: none;
 }
 
 div#lights div#lightParameter {
     position: absolute;
-    top: 70px;
-    left: 40px;
-    width: 400px;
-    height: 440px;
-    border-radius: 10px;
+    top: 87px;
+    left: 50px;
+    width: 500px;
+    height: 550px;
+    border-radius: 12px;
     background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid white;
 }
 
 div#lights div#lightParameter div.slider{
-    width: 120px;
-    height: 420px;
+    width: 150px;
+    height: 525px;
     background-color: #fff;
     position: absolute;
-    left: 10px;
-    top: 10px;
-    border-radius:  10px;
+    left: 12px;
+    top: 12px;
+    border-radius:  12px;
     /* background-image: linear-gradient(to top, #000 10%, #fff 90%); */
     border: 1px solid #ccc;
 }
@@ -106,12 +108,12 @@ div#lights div#lightParameter div.brightness{
 }
 div#lights div#lightParameter div.temperature{
 
-    left: 140px;
+    left: 175px;
     background-image: linear-gradient(to top, #ceddff 10%, #ffbc6c 90%);
 
 }
 div#lights div#lightParameter div.color{
-    left: 270px;
+    left: 337px;
     background-image: linear-gradient(to top, hsl(0,100%,50%)10%,hsl(60,100%, 50%), hsl(120,100%, 50%), hsl(180, 100%, 50%), hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%) 90%);
 
 }

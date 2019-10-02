@@ -1,5 +1,5 @@
 div#tv {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 0;
     width: 100%;
@@ -11,13 +11,13 @@ div#tv div.btn{
 	/* float: left; */
 	margin: 1px;
 	background-color: #202020;
-	height: 150px;
+	height: 187px;
 	position: relative;
-    border-radius: 10px;
+    border-radius: 12px;
     position: absolute;
-    top: 679px;
+    top: 849px;
     width: 100%;
-    left: 160px;
+    left: 200px;
 }
 
 div#tv div.halb {
@@ -27,36 +27,36 @@ div#tv div.drittel {
 	width: calc(33.3% - 2px);
 }
 div#tv div.btn.smaller {
-	height:114px;
+	height:142px;
 }
 
 div#tv div.btn div.title{
     color: #ccc;
-    font-size: 15px;
+    font-size: 19px;
     margin-bottom: 1px;
-    margin-top: 5px;
+    margin-top: 6px;
     text-align: center;
 }
 
 div#tv div.btn div.audiostate{
 	position: absolute;
 	/* width: 100%; */
-	top: 42px;
-	left: 54px;
-	font-size: 42px;
+	top: 52px;
+	left: 67px;
+	font-size: 52px;
 }
 
 div#tv div.btn div.audiostate img{
-	width: 43px;
-	height: 43px;
+	width: 54px;
+	height: 54px;
 }
 div#tv div.btn div.audiostate span.audioicon{
-    font-size: 30px;
-    line-height: 49px;
+    font-size: 37px;
+    line-height: 61px;
     width: 100%;
     color: #fff;
 }
-
+/* --------------------- bis hier ist es *1,25 --------------------*/
 div#tv div#tvControl {
     position: absolute;
     top: 4px;
