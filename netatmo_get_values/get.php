@@ -40,10 +40,12 @@ $client = new Netatmo\Clients\NAWSApiClient($config);
     }
 	
 	// print_r($data);
-	
+	// exit;
 	$out = array();
-
-	$out['outside'] = $data['devices'][0]['modules'][0]['dashboard_data'];
+    if (isset($data['devices'][0]['modules'][0]['dashboard_data']))
+    {
+        $out['outside'] = $data['devices'][0]['modules'][0]['dashboard_data'];
+    }
 	$out['inside'] = $data['devices'][0]['dashboard_data'];
 	print json_encode($out);
 die();
