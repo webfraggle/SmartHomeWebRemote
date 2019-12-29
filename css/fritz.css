@@ -1,5 +1,5 @@
 div#fritz {
-    display: none;
+    /* display: none; */
     position: absolute;
     top: 0;
     width: 100%;
@@ -38,7 +38,7 @@ div#fritz div.btn div.title{
     text-align: center;
 }
 
-div#fritz div.btn div.speedImage{
+div#fritz div.btn1 div.speedImage{
 	position: absolute;
 	/* width: 100%; */
 	top: 21px;
@@ -46,7 +46,7 @@ div#fritz div.btn div.speedImage{
 	font-size: 42px;
 }
 
-div#fritz div.btn div.speedImage img{
+div#fritz div.btn1 div.speedImage img{
 	width: 93px;
 	height: 93px;
 }

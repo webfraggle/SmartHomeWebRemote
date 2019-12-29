@@ -246,11 +246,12 @@
 				</div>
 	</div>
 	<div id="fritz" ng-controller="FritzCtrl" >
-		<div class="btn drittel smaller" ng-click="toggleVisibility()">
-				<div class="title">Internet</div>
+		<div class="btn1" ng-click="toggleVisibility()">
+				<div class="title" style="display: none;">Internet</div>
 				
-				<div class="speedImage" style="display: none">
-						<img ng-src="{{imageSrc}}" />
+				<div class="speedImage" >
+						<!-- <img ng-src="{{imageSrc}}" ng-on-load="refresh();" /> -->
+						<img ng-src="{{imageSrc}}" ng-click="refresh();" />
 					
 			  </div>
 		</div>

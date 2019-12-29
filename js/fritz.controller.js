@@ -1,9 +1,9 @@
 
-angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scope, DataSource, $interval, $timeout,$rootScope,$http, lgService) {
+angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scope, $interval, $timeout) {
     
    $scope.visible = false;
    $scope.sid = '';
-   //$scope.imageSrc = 'http://raspberrypi/fritzbox/getCurrentSpeedsCircleSVG.php?v=';
+//    $scope.imageSrc = 'http://raspberrypi2/fritzbox/getCurrentSpeedsCircleSVG.php?v=';
    $scope.imageSrc = '';
     $scope.init = function() {
 		console.log('start FritzCtrl');
@@ -32,10 +32,11 @@ angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scop
     {
         console.log('refresh Fritz');
         //DataSource.get('http://fritz.box/login_sid.lua?sid='+$scope.sid,setData,xmlTransform);
-        //$scope.imageSrc = 'http://raspberrypi/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
+        // $scope.imageSrc = 'http://raspberrypi2/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
+        $scope.imageSrc = 'http://orangepizeroplus/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
     }
 
-    $timeout($scope.refresh, 3000);
-    //$scope.refresh();
+    $interval($scope.refresh, 5000);
+    $scope.refresh();
 
 });
