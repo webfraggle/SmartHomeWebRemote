@@ -105,26 +105,35 @@
 	</div>
 	
 	<div id="lights" ng-controller="LightsCtrl" >
-
-		<!-- <div class="btn drittel" ng-repeat="light in lights"  ng-click="lightClicked($event,light)" ng-class="{'selected':currentLight==light}"> -->
-		<div class="btn drittel" ng-repeat="light in lights"  my-touchstart="lightTouchStart(light)" my-touchend="lightTouchEnd(light)" ng-class="{'selected':currentLight==light}">
-			<div class="title">{{light.title}}</div>
-			<div class="switch"><img ng-src="img/icons8-toggle-{{light.on ? 'on' : 'off'}}-96.png" width="50" height="50" /></div>
-			<div class="light"><span class="pe-7s-light"></span></div>
-			<div class="lightstate"><div class="c100 small circle" ng-class="'p'+light.bri">
-					  <span></span>
-					  <div class="slice">
-						<div class="bar"></div>
-						<div class="fill"></div>
-					  </div>
-					</div>
+		<div id="lightScroller">
+			<div id="lightscontainter" style="left:{{currentCenterLight*-200+200}}px;">
+				<div class="btn drittel" ng-click="allesAus()">
+					<div class="bigTitle">Alle<br/>Lichter<br/>aus</div>
 				</div>
-			<div class="colorstate" ng-show="light.featureHue && light.on && light.colormode == 'hs'" ng-style="light.cssHue"></div>
-			<div class="colorstate" ng-show="light.featureCt && light.on && light.colormode == 'ct'" ng-style="light.cssCt"></div>
-			<div class="colorstate" ng-show="light.on && light.colormode == ''" ng-style="light.cssBri"></div>
+				<div class="btn drittel" ng-repeat="light in lights"  my-touchstart="lightTouchStart(light)" my-touchend="lightTouchEnd(light)" ng-class="{'selected':currentLight==light}">
+					<div class="title">{{light.title}}</div>
+					<div class="switch"><img ng-src="img/icons8-toggle-{{light.on ? 'on' : 'off'}}-96.png" width="50" height="50" /></div>
+					<div class="light"><span class="pe-7s-light"></span></div>
+					<div class="lightstate"><div class="c100 small circle" ng-class="'p'+light.bri">
+							<span></span>
+							<div class="slice">
+								<div class="bar"></div>
+								<div class="fill"></div>
+							</div>
+							</div>
+						</div>
+					<div class="colorstate" ng-show="light.featureHue && light.on && light.colormode == 'hs'" ng-style="light.cssHue"></div>
+					<div class="colorstate" ng-show="light.featureCt && light.on && light.colormode == 'ct'" ng-style="light.cssCt"></div>
+					<div class="colorstate" ng-show="light.on && light.colormode == ''" ng-style="light.cssBri"></div>
+				</div>
+				
+			</div>
 		</div>
-		<div class="btn drittel smaller" ng-click="allesAus()">
-			<div class="bigTitle">Alle<br/>Lichter<br/>aus</div>
+		<div class="btn drittel peIcon" ng-click="goRight()">
+			<div><span class="pe-7s-angle-left-circle"></span></div>
+		</div>
+		<div class="btn drittel peIcon" style="margin-left: 200px;" ng-click="goLeft()">
+			<div><span class="pe-7s-angle-right-circle"></span></div>
 		</div>
 		<div id="lightParameter" ng-show="parameterVisible">
 			<div class="slider brightness" my-touchstart="touchMove()" my-touchmove="touchMove()">

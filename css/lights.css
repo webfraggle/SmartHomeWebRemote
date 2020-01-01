@@ -14,8 +14,32 @@ div#lights div.btn{
 div#lights div.halb {
 	width: calc(50% - 2px);
 }
+div#lights {
+    position: relative;
+}
+
+div#lightScroller {
+    overflow: hidden;
+    height: 182px;
+}
+div#lightscontainter
+{
+    width: 1300px;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+}
+div#lights div.peIcon {
+    background: transparent;
+    font-size: 100px;
+    
+}
+div#lights div.peIcon > div {
+    margin-top: 23px;
+    
+}
 div#lights div.drittel {
-	width: calc(33.3% - 2px);
+	/* width: calc(33.3% - 2px); */
+    width: 198px;
 }
 div#lights div.btn.smaller {
 	height:142px;

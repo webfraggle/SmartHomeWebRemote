@@ -1,6 +1,7 @@
 
 angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
     
+    $scope.currentCenterLight = 1;
     $scope.lampTemplate = {bri:0,lightIds:[],on:false,title:'',
     colormode:'',
     featureBri:true,
@@ -31,7 +32,7 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     $scope.ck.lightIds = [8];
     $scope.ck.title = 'Christophs Lampe';
 
-    $scope.lights = [$scope.fernseh, $scope.decke, $scope.ambiente, $scope.go, $scope.ck];
+    $scope.lights = [$scope.decke, $scope.fernseh, $scope.ambiente, $scope.go, $scope.ck];
     $scope.timer = null;
     $scope.timeout = 4000;
     $scope.enabled = true;
@@ -258,12 +259,27 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     }
 
 
-
 	$scope.allesAus = function()
 	{
 		$scope.setMultilights([1,2,3,4,5,7,9],false);
 	}
-	$scope.setMultilights = function(lights,v)
+
+    $scope.goLeft = function()
+    {
+        if ($scope.currentCenterLight < $scope.lights.length)
+        {
+            $scope.currentCenterLight ++;
+        }
+    }
+    $scope.goRight = function()
+    {
+        if ($scope.currentCenterLight > 1)
+        {
+            $scope.currentCenterLight --;
+        }
+    }
+
+    $scope.setMultilights = function(lights,v)
 	{
 		if (v===true || v===false)
 		{
