@@ -1,5 +1,5 @@
 
-angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
+angular.module('gui.hue', []).controller('HueCtrl', function HueCtrl($scope, $interval, $timeout,$http, hueService) {
 	
 	$scope.lights = [];
 	$scope.rooms = hueService.rooms;

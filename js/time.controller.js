@@ -1,5 +1,5 @@
 
-angular.module('gui.time', []).controller('TimeCtrl', function TimeCtrl($scope, $interval, $timeout) {
+angular.module('gui.time', []).controller('TimeCtrl', function TimeCtrl($scope, $interval) {
 	
     $scope.time = "--Time--";
 

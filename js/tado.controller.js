@@ -1,5 +1,5 @@
 
-angular.module('gui.tado', []).controller('TadoCtrl', function OverviewCtrl($scope, $interval, $timeout,$rootScope,$http) {
+angular.module('gui.tado', []).controller('TadoCtrl', function OverviewCtrl($scope, $interval, $timeout,$http) {
 	
 	$scope.url_prefix = tado_url_prefix;
 	$scope.home_id = tado_home_id;

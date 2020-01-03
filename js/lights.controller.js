@@ -1,5 +1,5 @@
 
-angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
+angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($scope, $interval, $timeout,$rootScope, hueService) {
     
     $scope.currentCenterLight = 1;
     $scope.lampTemplate = {bri:0,lightIds:[],on:false,title:'',
@@ -165,6 +165,14 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
         }
         $scope.delayedUpdate();
     }
+    $scope.switchLight = function(light,what)
+    {
+        for (i=0;i<light.lightIds.length;i++)
+        {
+            hueService.switchLight(light.lightIds[i],what);
+        }
+        $scope.delayedUpdate();
+    }
     $scope.lastSetTime = Date.now();
     
     $scope.currentLight = null;
@@ -278,6 +286,31 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
             $scope.currentCenterLight --;
         }
     }
+
+    // Tuna Knob Events
+    $rootScope.$on('tuna-rotation-start', function(event, args) {
+        $scope.currentLight = $scope.lights[$scope.currentCenterLight-1];
+        $scope.tunaStartBri = $scope.currentLight.bri*254/100;
+        $scope.tunaCurrentBri = $scope.tunaStartBri+0;
+        console.log('tuna-start', $scope.tunaStartBri, $scope.tunaCurrentBri, $scope.lights);
+    });
+    $rootScope.$on('tuna-rotation-end', function(event, args) {
+        $scope.currentLight = null;
+        console.log('tuna-end', $scope.lights);
+    });
+    $rootScope.$on('tuna-rotation-change', function(event, args) {
+        // console.log(args);
+        // do what you want to do
+        $scope.tunaCurrentBri = $scope.tunaStartBri+args.relativeDistanceCounter*120;
+        // console.log('tuna-move',$scope.tunaStartBri,$scope.tunaCurrentBri);
+        if ($scope.tunaCurrentBri <= 0){
+            $scope.tunaCurrentBri = 0;
+            $scope.switchLight($scope.currentLight, false);
+            return;
+        } 
+        if ($scope.tunaCurrentBri > 255) $scope.tunaCurrentBri = 255;
+        $scope.setBrightness($scope.currentLight,$scope.tunaCurrentBri);
+    });
 
     $scope.setMultilights = function(lights,v)
 	{

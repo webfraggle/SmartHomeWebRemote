@@ -6,6 +6,7 @@ var myApp = angular.module('huedisplay', [
     'ngAnimate',
 	// 'pr.longpress',
 	'gui.time',
+	'gui.tunaknob',
 	'gui.netatmo',
 	'gui.lights',
 	'gui.tv',

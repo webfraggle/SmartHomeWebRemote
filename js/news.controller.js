@@ -1,5 +1,5 @@
 
-angular.module('gui.news', []).controller('NewsCtrl', function NewsCtrl($scope, $interval, $timeout, $http) {
+angular.module('gui.news', []).controller('NewsCtrl', function NewsCtrl($scope, $interval, $http) {
 	
     $scope.count = -1;
     $scope.current = -1;
@@ -15,7 +15,7 @@ angular.module('gui.news', []).controller('NewsCtrl', function NewsCtrl($scope, 
     
     $scope.change = function()
     {
-        console.log($scope.articles.length);
+        // console.log($scope.articles.length);
         $scope.current++;
         if ($scope.current >= $scope.count)
         {

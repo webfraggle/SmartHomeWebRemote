@@ -1,5 +1,5 @@
 
-angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scope, $interval, $timeout) {
+angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scope, $interval) {
     
    $scope.visible = false;
    $scope.sid = '';
@@ -30,7 +30,7 @@ angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scop
     
     $scope.refresh = function()
     {
-        console.log('refresh Fritz');
+        // console.log('refresh Fritz');
         //DataSource.get('http://fritz.box/login_sid.lua?sid='+$scope.sid,setData,xmlTransform);
         // $scope.imageSrc = 'http://raspberrypi2/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
         $scope.imageSrc = 'http://orangepizeroplus/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();

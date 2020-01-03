@@ -30,13 +30,13 @@ myApp.factory('hueService', ['$http',function($http) {
     },
     switchLight:function(id,state)
     {
-      console.log('switchLight', id,state);
+      // console.log('switchLight', id,state);
       $http({
         method : 'PUT',
         url : this.url+'lights/'+id+'/state',
         data : {"on": state}
       }).then(function successCallback(response) {
-        console.log('switchLight response', response);
+        // console.log('switchLight response', response);
       }, function errorCallback(response) {
         console.log('switchLight Erros response', response);
         
@@ -74,7 +74,7 @@ myApp.factory('hueService', ['$http',function($http) {
       var $this = this;
       $this.busy = true;
       $this.getLightById(id).busy = true;
-      console.log(id,ct);
+      // console.log(id,ct);
 
       $http({
         method : 'PUT',
@@ -96,7 +96,7 @@ myApp.factory('hueService', ['$http',function($http) {
       var $this = this;
       $this.busy = true;
       $this.getLightById(id).busy = true;
-      console.log(id,hue);
+      // console.log(id,hue);
 
       $http({
         method : 'PUT',
@@ -156,7 +156,7 @@ myApp.factory('hueService', ['$http',function($http) {
         method : 'GET',
         url : this.url+'groups'
       }).then(function successCallback(response) {
-        console.log(response);
+        // console.log(response);
         $this.groups = [];
         $this.rooms = [];
         for (var groupNr in response.data)

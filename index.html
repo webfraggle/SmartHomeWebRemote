@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/app.css">
 		<link rel="stylesheet" href="css/lights.css">
 		<link rel="stylesheet" href="css/tv.css">
+		<link rel="stylesheet" href="css/tunaknob.css">
 		<link rel="stylesheet" href="css/fritz.css">
 		<link rel="stylesheet" href="css/circle.css">
 		<link rel="stylesheet" href="css/animations.css">
@@ -33,6 +34,7 @@
 		<script src="js/lg.service.js"></script>
 		<!-- <script src="js/hue.controller.js"></script> -->
 		<script src="js/time.controller.js"></script>
+		<script src="js/tunaknob.controller.js"></script>
 		<script src="js/tado.controller.js"></script>
 		<script src="js/netatmo.controller.js"></script>
 		<script src="js/lights.controller.js"></script>
@@ -150,6 +152,12 @@
 		<!-- <div class="btn halb" ng-click="update()">
 			<div class="more"><span class="pe-7s-more"></span></div>
 		</div>	 -->
+	</div>
+	<div id="tunaknob" ng-controller="TunaKnobCtrl" my-touchstart="touchStart()" my-touchend="touchEnd()" my-touchmove="touchMove()">
+		<div class="center"></div>
+		<div class="center" style="background-color: #fff;"  ng-show="isActive"></div>
+		<div class="circle" ng-show="isActive" ></div>
+		<div class="touchIndicator" style="left:{{posX-12}}px; top:{{posY-12}}px;" ng-show="isActive"></div>
 	</div>
 	<div id="tv" ng-controller="TvCtrl" >
 			<div class="btn drittel smaller" ng-click="toggleVisibility()">

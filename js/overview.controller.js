@@ -1,5 +1,5 @@
 
-angular.module('gui.overview', []).controller('OverviewCtrl', function OverviewCtrl($scope, $interval, $timeout,$rootScope,$http, hueService) {
+angular.module('gui.overview', []).controller('OverviewCtrl', function OverviewCtrl($scope,$rootScope, hueService) {
 	
     $scope.init = function() {
 		console.log('start OverviewCtrl');

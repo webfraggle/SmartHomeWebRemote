@@ -1,6 +1,6 @@
-div#lights {
-	/* display: none; */
-}
+/* div#lights {
+	display: none;
+} */
 
 div#lights div.btn{
 	float: left;
@@ -53,7 +53,9 @@ div#lights div.btn div.bigTitle{
     line-height: 36px;
 }
 div#lights div.btn.selected{
-	background-color: #295a28;
+    /* background-color: #295a28; */
+    box-shadow:inset 0px 0px 0px 4px rgb(255, 185, 56);
+
 }
 
 div#lights div.btn div.more{
@@ -104,7 +106,7 @@ div#lights div.btn div.colorstate {
 
 div#lights div#lightParameter {
     position: absolute;
-    top: 87px;
+    top: -563px;
     left: 50px;
     width: 500px;
     height: 550px;

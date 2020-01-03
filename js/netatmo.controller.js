@@ -1,5 +1,5 @@
 
-angular.module('gui.netatmo', []).controller('NetatmoCtrl', function NetatmoCtrl($scope, $interval, $timeout,$rootScope,$http) {
+angular.module('gui.netatmo', []).controller('NetatmoCtrl', function NetatmoCtrl($scope, $interval,$rootScope,$http) {
 
     $scope.init = function() {
 		console.log('start NetatmoCtrl');

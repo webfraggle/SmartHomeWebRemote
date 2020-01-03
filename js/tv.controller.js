@@ -1,5 +1,5 @@
 
-angular.module('gui.tv', []).controller('TvCtrl', function TvCtrl($scope, $interval, $timeout,$rootScope,$http, lgService) {
+angular.module('gui.tv', []).controller('TvCtrl', function TvCtrl($scope, $interval, lgService) {
     
    $scope.lgService = lgService;
    $scope.visible = false;
