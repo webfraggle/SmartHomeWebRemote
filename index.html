@@ -31,16 +31,17 @@
 		<script src="js/app.js"></script>
 		<script src="js/lamp.directive.js"></script>
 		<script src="js/hue.service.js"></script>
-		<script src="js/lg.service.js"></script>
+		<!-- <script src="js/lg.service.js"></script> -->
 		<!-- <script src="js/hue.controller.js"></script> -->
 		<script src="js/time.controller.js"></script>
 		<script src="js/tunaknob.controller.js"></script>
 		<script src="js/tado.controller.js"></script>
 		<script src="js/netatmo.controller.js"></script>
 		<script src="js/lights.controller.js"></script>
-		<script src="js/tv.controller.js"></script>
+		<!-- <script src="js/tv.controller.js"></script> -->
 		<script src="js/fritz.controller.js"></script>
-		<script src="js/news.controller.js"></script>
+		<!-- <script src="js/news.controller.js"></script> -->
+		<script src="js/fritzspeed.controller.js"></script>
 		<!-- <script src="js/overview.controller.js"></script> -->
 		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -99,10 +100,14 @@
 				<!-- <div id="heaterTemp" class="tempView"><div>Heizung Ist</div>{{heaterTemp | number:1}}<span class="grad">&deg;C</span></div> -->
 				<!-- <div id="heaterSollTemp" class="tempView"><div>Heizung Soll</div>{{heaterSollTemp | number:1}}<span class="grad">&deg;C</span></div> -->
 		</div>
-		<div id="news" ng-controller="NewsCtrl"  ng-show="state == 1"  class="funky-show-hide">
+		<!-- <div id="news" ng-controller="NewsCtrl"  ng-show="state == 1"  class="funky-show-hide">
 			<div style="width:100%;height:100%;" class="blend-animation" ng-animate-swap="image"><img ng-src="{{image}}" /></div>
 			<div class="headline swap-animation" ng-animate-swap="title">{{title}}</div>
 			<div class="top"></div>
+		</div> -->
+		<div id="fritzspeed" ng-controller="FritzSpeedCtrl"  ng-show="state == 1"  class="funky-show-hide">
+			<div>{{uploadMax}}</div>
+			<div>{{downloadMax}}</div>
 		</div>
 	</div>
 	
@@ -172,7 +177,7 @@
 					  </div>
 				  </div>
 			</div>
-
+<!-- 
 			<div id="tvControl" ng-show="visible">
 					<div class="demo" style="display:none; z-index:300; background-color:darkblue;">
 							<div ng-click="lgService.volumeUp()">Volume Up</div>
@@ -261,7 +266,7 @@
 					</div>
 					
 				</div>
-	</div>
+	</div> -->
 	<div id="fritz" ng-controller="FritzCtrl" >
 		<div class="btn1" ng-click="toggleVisibility()">
 				<div class="title" style="display: none;">Internet</div>

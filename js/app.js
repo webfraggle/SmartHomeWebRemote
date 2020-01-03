@@ -9,10 +9,11 @@ var myApp = angular.module('huedisplay', [
 	'gui.tunaknob',
 	'gui.netatmo',
 	'gui.lights',
-	'gui.tv',
+	// 'gui.tv',
 	'gui.fritz',
 	'gui.tado',
-	'gui.news'
+	'gui.fritzspeed'
+	// 'gui.news'
 
 	// 'rzModule'
 ]).directive('myTouchstart', [function() {
