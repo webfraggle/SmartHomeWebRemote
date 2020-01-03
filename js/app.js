@@ -100,12 +100,12 @@ var myApp = angular.module('huedisplay', [
 
 	$scope.showsettings = false;
 	$rootScope.disabled = [];
-	$scope.state = 0;
+	$scope.state = 1;
 	$scope.subindex = 0;
 	$scope.substate = 0;
 	$scope.states = [
-		[{time:30}],
-		[{time:30}]
+		[{time:10}],
+		[{time:10}]
 	];
 	$scope.auto = true;
 

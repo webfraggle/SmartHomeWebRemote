@@ -5,6 +5,8 @@
 		<title>SmartHome Display</title>
 		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,900' rel='stylesheet' type='text/css'> -->
 		<!-- <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet"> -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    	<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Catamaran:700,400,300" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.5.1/rzslider.min.css">
 		<link rel="stylesheet" href="css/owfont-regular.min.css">
@@ -15,6 +17,7 @@
 		<link rel="stylesheet" href="css/fritz.css">
 		<link rel="stylesheet" href="css/circle.css">
 		<link rel="stylesheet" href="css/animations.css">
+		<link rel="stylesheet" href="css/fritzspeed.css">
 		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<link rel="stylesheet" href="css/overwrites.css">
@@ -106,8 +109,13 @@
 			<div class="top"></div>
 		</div> -->
 		<div id="fritzspeed" ng-controller="FritzSpeedCtrl"  ng-show="state == 1"  class="funky-show-hide">
-			<div>{{uploadMax}}</div>
-			<div>{{downloadMax}}</div>
+			<div class="bspNr Us" ng-show="uploadMax > 0">{{uploadMax | number : 1}}</div>
+			<div class="bspTxt Us">Upload</div>
+			<div class="bspNr Ds" ng-show="downloadMax > 0">{{downloadMax | number : 1}}</div>
+			<div class="bspTxt Ds">Download</div>
+			<div class="bspMbit Us">Mbit/s</div>
+			<div class="bspMbit Ds">Mbit/s</div>
+			<div class="ct-chart ct-perfect-fourth chart"></div>
 		</div>
 	</div>
 	
@@ -164,7 +172,7 @@
 		<div class="circle" ng-show="isActive" ></div>
 		<div class="touchIndicator" style="left:{{posX-12}}px; top:{{posY-12}}px;" ng-show="isActive"></div>
 	</div>
-	<div id="tv" ng-controller="TvCtrl" >
+	<!-- <div id="tv" ng-controller="TvCtrl" >
 			<div class="btn drittel smaller" ng-click="toggleVisibility()">
 					<div class="title">LG Fernseher</div>
 
@@ -177,7 +185,7 @@
 					  </div>
 				  </div>
 			</div>
-<!-- 
+
 			<div id="tvControl" ng-show="visible">
 					<div class="demo" style="display:none; z-index:300; background-color:darkblue;">
 							<div ng-click="lgService.volumeUp()">Volume Up</div>

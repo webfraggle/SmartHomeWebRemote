@@ -1,0 +1,102 @@
+div#fritzspeed {
+    position: relative;
+    height: 325px;
+    /* transform-origin: center center -180px; */
+    overflow: hidden;
+}
+div#fritzspeed div{
+    position: absolute;
+}
+
+div#fritzspeed div.bspNr{
+    font-size: 85px;
+    font-weight: 90;
+    line-height: 95px;
+    text-align: right;
+    width: 190px;
+}
+
+div#fritzspeed div.bspNr.Us,
+div#fritzspeed div.bspNr.Ds{
+    left:10px;
+    top:0px;
+}
+
+div#fritzspeed div.bspNr.Us{
+    left:310px;
+}
+
+div#fritzspeed div.bspTxt{
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 20px;
+    /* text-align: right; */
+    width: 190px;
+}
+
+div#fritzspeed div.bspTxt.Ds,
+div#fritzspeed div.bspTxt.Us{
+    left:210px;
+    top:20px;
+}
+
+div#fritzspeed div.bspTxt.Us{
+    left: 510px;
+}
+
+div#fritzspeed div.bspMbit{
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 20px;
+    /* text-align: right; */
+    width: 190px;
+}
+
+div#fritzspeed div.bspTxt,
+div#fritzspeed div.bspMbit {
+    color: #777;
+}
+div#fritzspeed div.bspMbit.Ds,
+div#fritzspeed div.bspMbit.Us{
+    left:210px;
+    top:50px;
+}
+
+div#fritzspeed div.bspMbit.Us{
+    left: 510px;
+}
+div#fritzspeed div.chart{
+    width: 600px;
+    height: 220px;
+    top: 100px;
+}
+
+.ct-series-b .ct-line {
+    /* stroke-width: 5px; */
+    stroke: #F98248;
+}
+.ct-series-a .ct-line {
+    /* stroke-width: 5px; */
+    stroke: #61282F;
+}
+
+.ct-series-a .ct-point,
+.ct-series-b .ct-point {
+    stroke: #F98248;
+    stroke-width: 5px;
+  }
+
+  .ct-series-a .ct-point {
+    stroke: #61282F;
+  }
+
+  .ct-grid {
+    stroke: rgba(255,255,255,.2);
+  }
+
+  .ct-label {
+    fill: rgba(255,255,255,.2);
+    color: rgba(255,255,255,.2);
+    font-size: .75rem;
+    line-height: 1;
+}
