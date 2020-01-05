@@ -40,7 +40,7 @@ angular.module('gui.fritzspeed', []).controller('FritzSpeedCtrl', function Fritz
 
     $scope.init = function() {
     console.log('start FritzSpeedCtrl');
-      $scope.chart = new Chartist.Line('.ct-chart', $scope.chartData, $scope.chartOptions, true);
+      $scope.chart = new Chartist.Line('#chart-dslspeed', $scope.chartData, $scope.chartOptions, true);
       
     };
     $scope.init();
@@ -53,7 +53,7 @@ angular.module('gui.fritzspeed', []).controller('FritzSpeedCtrl', function Fritz
 			method : 'GET',
 			url : 'http://orangepizeroplus/fritzbox/getCurrentSpeeds.php',
 		}).then(function successCallback(response) {
-            console.log('FritzSpeed',response);
+            // console.log('FritzSpeed',response);
             var d = response.data[0];
             if (!d) return;
 			$scope.downloadMax = d.ds_bps_max*$scope.factor;
@@ -70,7 +70,7 @@ angular.module('gui.fritzspeed', []).controller('FritzSpeedCtrl', function Fritz
             $scope.chartData.series[0].reverse();
             $scope.chartData.series[1].reverse();
             $scope.chart.update($scope.chartData, $scope.chartOptions, true);
-            console.log($scope.chart);
+            // console.log($scope.chart);
 			
             
 		}, function errorCallback(response) {

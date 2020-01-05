@@ -1,9 +1,4 @@
-div#fritzspeed {
-    position: relative;
-    height: 325px;
-    /* transform-origin: center center -180px; */
-    overflow: hidden;
-}
+
 div#fritzspeed div{
     position: absolute;
 }

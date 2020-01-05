@@ -1,0 +1,64 @@
+div#tempchart {
+    position: relative;
+    height: 325px;
+    /* transform-origin: center center -180px; */
+    overflow: hidden;
+}
+div#tempchart div{
+    position: absolute;
+}
+
+div#tempchart div.txt{
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 20px;
+    /* text-align: right; */
+    width: 190px;
+    color: #777;
+    top: 15px;
+    left: 20px;
+    font-weight: 900;
+}
+
+div#tempchart div.chart{
+    width: 600px;
+    height: 270px;
+    top: 50px;
+}
+div#tempchart .ct-series-c .ct-line {
+    stroke-width: 2px;
+    stroke: rgba(255, 255, 255, 0.623);
+}
+div#tempchart .ct-series-b .ct-line {
+    /* stroke-width: 5px; */
+    stroke: #F98248;
+}
+div#tempchart .ct-series-a .ct-line {
+    /* stroke-width: 5px; */
+    stroke: rgb(40, 86, 97);
+}
+
+div#tempchart .ct-series-c .ct-point
+{
+    display: none;
+}
+div#tempchart .ct-series-a .ct-point,
+div#tempchart .ct-series-b .ct-point {
+    stroke: #F98248;
+    stroke-width: 5px;
+  }
+
+div#tempchart .ct-series-a .ct-point {
+    stroke: rgb(40, 86, 97);
+  }
+
+  div#tempchart .ct-grid {
+    stroke: rgba(255,255,255,.2);
+  }
+
+  div#tempchart .ct-label {
+    fill: rgba(255,255,255,.2);
+    color: rgba(255,255,255,.2);
+    font-size: .75rem;
+    line-height: 1;
+}

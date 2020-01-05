@@ -23,7 +23,7 @@ angular.module('gui.netatmo', []).controller('NetatmoCtrl', function NetatmoCtrl
 			method : 'GET',
 			url : netatmo_get_url
 		}).then(function successCallback(response) {
-			// console.log('Netatmo',response);
+			console.log('Netatmo',response);
 			// console.log(response.data.inside.Temperature);
 			$scope.inside = response.data.inside;
 			$scope.outside = response.data.outside;

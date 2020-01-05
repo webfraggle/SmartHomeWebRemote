@@ -12,6 +12,7 @@ var myApp = angular.module('huedisplay', [
 	// 'gui.tv',
 	'gui.fritz',
 	'gui.tado',
+	'gui.tempchart',
 	'gui.fritzspeed'
 	// 'gui.news'
 
@@ -100,13 +101,19 @@ var myApp = angular.module('huedisplay', [
 
 	$scope.showsettings = false;
 	$rootScope.disabled = [];
-	$scope.state = 1;
+	$scope.state = 2;
 	$scope.subindex = 0;
 	$scope.substate = 0;
 	$scope.states = [
 		[{time:10}],
+		[{time:10}],
 		[{time:10}]
 	];
+	// $scope.states = [
+	// 	[{time:2}],
+	// 	[{time:2}],
+	// 	[{time:2}]
+	// ];
 	$scope.auto = true;
 
 	//$scope.state = 'overview';

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="css/circle.css">
 		<link rel="stylesheet" href="css/animations.css">
 		<link rel="stylesheet" href="css/fritzspeed.css">
+		<link rel="stylesheet" href="css/tempchart.css">
 		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<link rel="stylesheet" href="css/overwrites.css">
@@ -45,6 +46,7 @@
 		<script src="js/fritz.controller.js"></script>
 		<!-- <script src="js/news.controller.js"></script> -->
 		<script src="js/fritzspeed.controller.js"></script>
+		<script src="js/tempchart.controller.js"></script>
 		<!-- <script src="js/overview.controller.js"></script> -->
 		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -76,7 +78,7 @@
 		<!-- <div>{{tadoMode}} {{overlayType}}</div> -->
 	</div>
 	<div id="infoPanel">
-		<div id="netatmo" ng-controller="NetatmoCtrl" ng-show="state == 0"  class="funky-show-hide">
+		<div id="netatmo" ng-controller="NetatmoCtrl" ng-show="state == 0"  class="funky-show-hide funky-container">
 				<div id="inside" class="tempView">
 					<div class="temp"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
 					<div class="subvalues">
@@ -108,14 +110,18 @@
 			<div class="headline swap-animation" ng-animate-swap="title">{{title}}</div>
 			<div class="top"></div>
 		</div> -->
-		<div id="fritzspeed" ng-controller="FritzSpeedCtrl"  ng-show="state == 1"  class="funky-show-hide">
+		<div id="fritzspeed" ng-controller="FritzSpeedCtrl"  ng-show="state == 1"  class="funky-show-hide funky-container">
 			<div class="bspNr Us" ng-show="uploadMax > 0">{{uploadMax | number : 1}}</div>
 			<div class="bspTxt Us">Upload</div>
 			<div class="bspNr Ds" ng-show="downloadMax > 0">{{downloadMax | number : 1}}</div>
 			<div class="bspTxt Ds">Download</div>
 			<div class="bspMbit Us">Mbit/s</div>
 			<div class="bspMbit Ds">Mbit/s</div>
-			<div class="ct-chart ct-perfect-fourth chart"></div>
+			<div class="ct-chart ct-perfect-fourth chart" id="chart-dslspeed"></div>
+		</div>
+		<div id="tempchart" ng-controller="TempChartCtrl"  ng-show="state == 2"  class="funky-show-hide funky-container">
+			<div class="txt">Temperatur</div>
+			<div class="ct-chart ct-golden-section chart" id="chart-temp"></div>
 		</div>
 	</div>
 	

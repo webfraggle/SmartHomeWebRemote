@@ -4,8 +4,18 @@ body {
 
 #infoPanel {
     perspective: 1000px;
+    position: relative;
     
 }
+
+.funky-container {
+  width: 600px;
+  height: 325px;
+  position: absolute;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
 .funky-show-hide {
     transform-origin: center center -180px;
     transition: transform 0.5s ease 0.0s, opacity 0.1s ease 0.0s;
