@@ -301,7 +301,7 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     $rootScope.$on('tuna-rotation-change', function(event, args) {
         // console.log(args);
         // do what you want to do
-        $scope.tunaCurrentBri = $scope.tunaStartBri+args.relativeDistanceCounter*120;
+        $scope.tunaCurrentBri = $scope.tunaStartBri+args.relativeDistanceCounter*200;
         // console.log('tuna-move',$scope.tunaStartBri,$scope.tunaCurrentBri);
         if ($scope.tunaCurrentBri <= 0){
             $scope.tunaCurrentBri = 0;

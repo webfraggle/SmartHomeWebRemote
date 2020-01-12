@@ -3,11 +3,11 @@ angular.module('gui.tempchart', []).controller('TempChartCtrl', function FritzSp
 	
     $scope.chartData = {
         // A labels array that can contain any sort of values
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        labels: [],
         // Our series array that contains series objects or in this case series data arrays
         series: [
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            [0],
+            [0]
         ]
       };
     $scope.chartOptions = {
@@ -74,9 +74,9 @@ angular.module('gui.tempchart', []).controller('TempChartCtrl', function FritzSp
                 m = vTime.getMinutes();
                 h = vTime.getHours();
                 // console.log(1, vTime, h, m);
-                if (m == 0 && (h == 6 || h == 12 || h == 18 || h == 0 || h == 9 || h == 21 || h == 3 || h == 15))
+                if ((m == 15 || m == 0) && (h == 6 || h == 12 || h == 18 || h == 0 || h == 9 || h == 21 || h == 3 || h == 15))
                 {
-                    $scope.chartData.labels.push(h+':00');
+                    $scope.chartData.labels.push(h+':'+m.pad(2));
                 } else {
 
                     $scope.chartData.labels.push('');

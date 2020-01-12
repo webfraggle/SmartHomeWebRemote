@@ -35,3 +35,9 @@ function round5(x)
 {
     return Math.ceil(x/5)*5;
 }
+
+Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+}
