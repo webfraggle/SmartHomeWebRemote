@@ -12,6 +12,8 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
 
     $scope.init = function() {
     console.log('start TunaKnobs');
+    $scope.number1 = "-";
+    $scope.number2 = "-";
     
     };
     $scope.init();
@@ -53,8 +55,9 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
         if (!event.targetTouches.length) return;
         touch = event.targetTouches[0];
         // console.log(touch);
-        $scope.posX = touch.clientX - touch.target.offsetLeft;
-        $scope.posY = touch.clientY - touch.target.offsetTop;
+        $scope.posX = touch.clientX*0.89 - touch.target.offsetLeft;
+        $scope.posY = touch.clientY*0.89 - touch.target.offsetTop;
+
 
         $scope.angle = Math.atan2($scope.posY - $scope.centerPointY, $scope.posX - $scope.centerPointX)  / Math.PI;
         if ($scope.lastAngle != null)
@@ -87,7 +90,18 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
             
             // console.log($scope.lastAngle, $scope.angle, dif);
             $scope.counter -= dif;
-            console.log($scope.counter);
+
+            var nrString = Math.abs(Math.floor($scope.counter*10)).toString();
+            if (nrString.length == 1)
+            {
+                $scope.number2 = nrString;
+                $scope.number1 = "";
+            } else {
+                $scope.number1 = nrString.substring(0,1);
+                $scope.number2 = nrString.substring(1,2);
+            }
+
+            console.log($scope.counter,nrString,$scope.number1,$scope.number2);
             
 
         }

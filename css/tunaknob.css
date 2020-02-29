@@ -37,6 +37,33 @@ div#tunaknob div.centerText {
     font-style: normal;
 }
 
+div#tunaknob div.number1, 
+div#tunaknob div.number2 
+{
+    margin: 0;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+    font-size: 165px;
+    line-height: 115px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+div#tunaknob div.number1 
+{
+    top: 85px;
+    left: 0;
+    width: 170px;
+    text-align: right;
+}
+
+div#tunaknob div.number2
+{
+    top: 85px;
+    left: 175px;
+    width: 170px;
+}
 
 div#tunaknob div.circle {
     position: absolute;
