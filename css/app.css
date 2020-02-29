@@ -240,8 +240,8 @@ div#netatmo div#inside {
 }
 
 div#netatmo {
-	position: relative;
-	top: 56px;
+	/* position: relative; */
+	/* top: 56px; */
 	/* margin-top: 45px; */
 	/* margin-bottom: 10px; */
 }

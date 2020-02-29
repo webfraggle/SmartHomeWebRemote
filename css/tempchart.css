@@ -1,8 +1,8 @@
 div#tempchart {
-    position: relative;
-    height: 325px;
+    /* position: relative; */
+    /* height: 325px; */
     /* transform-origin: center center -180px; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 div#tempchart div{
     position: absolute;

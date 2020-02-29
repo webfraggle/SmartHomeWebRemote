@@ -1,0 +1,20 @@
+div#launcher {
+    /* position: relative; */
+    /* height: 325px; */
+    /* transform-origin: center center -180px; */
+    /* overflow: hidden; */
+    /* width: 600px; */
+}
+
+div#launcher .btn {
+    width: 130px;
+    height: 70px;
+    float: left;
+    margin: 6px;
+    background-color: #202020;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    line-height: 30px;
+    
+}

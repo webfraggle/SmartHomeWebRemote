@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="css/animations.css">
 		<link rel="stylesheet" href="css/fritzspeed.css">
 		<link rel="stylesheet" href="css/tempchart.css">
+		<link rel="stylesheet" href="css/launcher.css">
 		<!-- <link rel="stylesheet" href="vendor/angular-ui-switch.min.css"> -->
 		<link rel="stylesheet" href="css/ipad.css" media="(min-width: 1024px)">
 		<link rel="stylesheet" href="css/overwrites.css">
@@ -48,6 +49,7 @@
 		<!-- <script src="js/news.controller.js"></script> -->
 		<script src="js/fritzspeed.controller.js"></script>
 		<script src="js/tempchart.controller.js"></script>
+		<script src="js/launcher.controller.js"></script>
 		<!-- <script src="js/overview.controller.js"></script> -->
 		<!-- <script src="vendor/angular-ui-switch.min.js"></script> -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -84,6 +86,7 @@
 	</div>
 	<div id="infoPanel">
 		<div id="netatmo" ng-controller="NetatmoCtrl" ng-show="state == 0"  class="funky-show-hide funky-container">
+				<div id="netatmoContainer" style="position: relative; top: 56px;">
 				<div id="inside" class="tempView">
 					<div class="temp"><span ng-bind-html="inside.Temperature | number:1 | smallDecimal | trust"></span><span class="grad">&deg;C</span><span class="trend" ng-class="{'pe-7s-angle-up':inside.temp_trend=='up','pe-7s-angle-down':inside.temp_trend=='down','pe-7s-angle-right':inside.temp_trend=='stable'}"></span></div>
 					<div class="subvalues">
@@ -110,6 +113,7 @@
 				<!-- <div id="heaterTemp" class="tempView"><div>Heizung Ist</div>{{heaterTemp | number:1}}<span class="grad">&deg;C</span></div> -->
 				<!-- <div id="heaterSollTemp" class="tempView"><div>Heizung Soll</div>{{heaterSollTemp | number:1}}<span class="grad">&deg;C</span></div> -->
 		</div>
+		</div>
 		<!-- <div id="news" ng-controller="NewsCtrl"  ng-show="state == 1"  class="funky-show-hide">
 			<div style="width:100%;height:100%;" class="blend-animation" ng-animate-swap="image"><img ng-src="{{image}}" /></div>
 			<div class="headline swap-animation" ng-animate-swap="title">{{title}}</div>
@@ -128,6 +132,14 @@
 			<div class="txt">Temperatur</div>
 			<div class="ct-chart ct-golden-section chart" id="chart-temp"></div>
 		</div>
+		<div id="launcher" ng-controller="LauncherCtrl"  ng-show="state == 3"  class="funky-show-hide funky-container">
+			<div style="margin-top: 10px; margin-left:10px">
+
+				<div  ng-repeat="app in apps" class="btn" ng-click="startApp(app);">{{app.label}}</div>
+			</div>
+			<!-- <div><iframe src="fully://launcher" style="width: 400px; height: 200px;"></iframe></div> -->
+		</div>
+		<div id="next" ng-click="toggle();" style="position: absolute; width: 100px; right: 0;top:0;bottom: 0; background-color: transparent;"></div>
 	</div>
 	
 	<div id="lights" ng-controller="LightsCtrl" style="display: none;">
