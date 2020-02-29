@@ -13,6 +13,7 @@ var myApp = angular.module('huedisplay', [
 	'gui.fritz',
 	'gui.tado',
 	'gui.tempchart',
+	'gui.launcher',
 	'gui.fritzspeed'
 	// 'gui.news'
 
@@ -99,15 +100,17 @@ var myApp = angular.module('huedisplay', [
 .controller('AppCtrl', function AppCtrl($scope, $rootScope, $element, $timeout) {
 
 
+	$scope.timer = null;
 	$scope.showsettings = false;
 	$rootScope.disabled = [];
-	$scope.state = 2;
+	$scope.state = 3;
 	$scope.subindex = 0;
 	$scope.substate = 0;
 	$scope.states = [
 		[{time:10}],
 		[{time:10}],
-		[{time:10}]
+		[{time:10}],
+		[{time:5}]
 	];
 	// $scope.states = [
 	// 	[{time:2}],
@@ -142,6 +145,10 @@ var myApp = angular.module('huedisplay', [
 	window.addEventListener("orientationchange",$scope.resize)
 	$scope.toggle = function()
     {
+		if ($scope.timer != null)
+		{
+			$timeout.cancel($scope.timer);
+		}
 		//console.log($scope.states);
 		// console.log($scope.states[$scope.state]);
 		console.log('from state:', $scope.state);
@@ -167,7 +174,7 @@ var myApp = angular.module('huedisplay', [
 		time = $scope.states[$scope.state][$scope.subindex].time;
 		$scope.substate += $scope.subindex;
 		console.log('to state',$scope.state, 'substate:',$scope.substate, 'subindex:',$scope.subindex);
-		$timeout(function(){
+		$scope.timer = $timeout(function(){
 				if ($scope.auto)
 				{
 					$scope.toggle();
@@ -184,17 +191,17 @@ var myApp = angular.module('huedisplay', [
 		}
 		$scope.handleKeyDown = function(key)
 	{
-		console.log(key.key);
-		switch (key.key)
-		{
-			case "ArrowRight":
-				$scope.toggle();
-				$scope.auto = false;
-			break;
-		}
+		// console.log(key.key);
+		// switch (key.key)
+		// {
+		// 	case "ArrowRight":
+		// 		$scope.toggle();
+		// 		$scope.auto = false;
+		// 	break;
+		// }
 	}
 	console.log($scope.states, $scope.state, $scope.subindex);
-		$timeout(function(){
+	$scope.timer = $timeout(function(){
 			if ($scope.auto)
 			{
 				$scope.toggle();

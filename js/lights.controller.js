@@ -300,7 +300,6 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
     });
     $rootScope.$on('tuna-rotation-change', function(event, args) {
         // console.log(args);
-        // do what you want to do
         $scope.tunaCurrentBri = $scope.tunaStartBri+args.relativeDistanceCounter*200;
         // console.log('tuna-move',$scope.tunaStartBri,$scope.tunaCurrentBri);
         if ($scope.tunaCurrentBri <= 0){
@@ -312,6 +311,54 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
         $scope.setBrightness($scope.currentLight,$scope.tunaCurrentBri);
     });
 
+    $scope.onKeyDown = function(keycodes)
+    {
+        // console.log(keycodes);
+        keycodes.preventDefault();
+
+        switch (keycodes.key)
+		{
+            case "ArrowRight":
+                $scope.goLeft();
+				return;
+            break;
+            case "ArrowLeft":
+                $scope.goRight();
+				return;
+            break;
+        }
+        
+        console.log(keycodes.key);
+            $scope.currentLight = $scope.lights[$scope.currentCenterLight-1];
+            $scope.tunaStartBri = $scope.currentLight.bri*254/100;
+            $scope.tunaCurrentBri = $scope.tunaStartBri+0;
+
+        stepSize = 36;
+        switch (keycodes.key)
+		{
+            case "ArrowUp":
+				$scope.tunaCurrentBri = $scope.tunaStartBri+stepSize;
+			break;
+			case "ArrowDown":
+				$scope.tunaCurrentBri = $scope.tunaStartBri-stepSize;
+			break;
+        }
+        
+        // console.log('tuna-move',$scope.tunaStartBri,$scope.tunaCurrentBri);
+        if ($scope.tunaCurrentBri <= 0){
+            $scope.tunaCurrentBri = 0;
+            $scope.switchLight($scope.currentLight, false);
+            $scope.currentLight = null;
+            return;
+        } 
+        if ($scope.tunaCurrentBri > 255) $scope.tunaCurrentBri = 255;
+        $scope.setBrightness($scope.currentLight,$scope.tunaCurrentBri);
+        $scope.currentLight = null;
+    }
+    if (window.addEventListener) 
+        window.addEventListener("keydown", $scope.onKeyDown, false);
+    else if (window.attachEvent) 
+        window.attachEvent("onkeydown", $scope.onKeyDown);
     $scope.setMultilights = function(lights,v)
 	{
 		if (v===true || v===false)

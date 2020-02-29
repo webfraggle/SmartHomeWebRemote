@@ -1,5 +1,5 @@
 
-angular.module('gui.tempchart', []).controller('TempChartCtrl', function FritzSpeedCtrl($scope, $interval, $http) {
+angular.module('gui.tempchart', []).controller('TempChartCtrl', function TempChartCtrl($scope, $interval, $http) {
 	
     $scope.chartData = {
         // A labels array that can contain any sort of values
