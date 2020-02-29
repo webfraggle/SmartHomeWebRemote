@@ -1,13 +1,13 @@
 div#tunaknob {
     position: absolute;
-    width: 160px;
-    height: 160px;
-    left: 220px;
-    top: 850px;
-    /* for development */
+    width: 336px;
+    height: 336px;
+    left: 130px;
+    top: 530px;
     /* top: 420px; */
-    background-color: #202020;
-    border-radius: 80px
+    /* background-color: #ff2020; */
+    background-color: transparent;
+    border-radius: 168px;
 }
 div#tunaknob div{
     pointer-events: none;
@@ -22,6 +22,19 @@ div#tunaknob div.center {
     top: 50px;
     background-color: #4b4b4b;
     border-radius: 30px
+}
+
+div#tunaknob div.centerText {
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -70%);
+  transform: translate(-50%, -70%);
+    font-size: 165px;
+    line-height: 115px;
+    font-weight: 500;
+    font-style: normal;
 }
 
 

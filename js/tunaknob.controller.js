@@ -3,8 +3,8 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
 	
     $scope.posX = 0;
     $scope.posY = 0;
-    $scope.centerPointX = 80;
-    $scope.centerPointY = 80;
+    $scope.centerPointX = 168;
+    $scope.centerPointY = 168;
     $scope.angle = null;
     $scope.counter = 0;
     $scope.lastAngle = null;
@@ -27,8 +27,8 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
         $scope.posY = touch.clientY - touch.target.offsetTop;
 
         $scope.lastAngle = Math.atan2($scope.posY - $scope.centerPointY, $scope.posX - $scope.centerPointX)  / Math.PI;
-        $rootScope.$broadcast('tuna-rotation-start', { 
-        });
+        // $rootScope.$broadcast('tuna-rotation-start', { 
+        // });
 
     }
     
@@ -36,8 +36,8 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
     {
         $scope.reset();
         $scope.isActive = false;
-        $rootScope.$broadcast('tuna-rotation-end', { 
-        });
+        // $rootScope.$broadcast('tuna-rotation-end', { 
+        // });
     } 
 
     $scope.reset = function()
@@ -87,14 +87,14 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
             
             // console.log($scope.lastAngle, $scope.angle, dif);
             $scope.counter -= dif;
-            // console.log($scope.counter);
+            console.log($scope.counter);
             
 
         }
-        $rootScope.$broadcast('tuna-rotation-change', { 
-            relativeDistanceCounter: $scope.counter,
-            absoluteAngle: ($scope.angle * (180 / Math.PI) * Math.PI)+180
-        });
+        // $rootScope.$broadcast('tuna-rotation-change', { 
+        //     relativeDistanceCounter: $scope.counter,
+        //     absoluteAngle: ($scope.angle * (180 / Math.PI) * Math.PI)+180
+        // });
 
         $scope.lastAngle = $scope.angle;
     }

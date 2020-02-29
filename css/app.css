@@ -1,9 +1,10 @@
 body, html {
 	/* width: 100%; */
 	/* height: 100%; */
-	font-family: 'Catamaran', 'Open Sans', sans-serif;
+	/* font-family: 'Catamaran', 'Open Sans', sans-serif; */
+	font-family: freight-sans-compressed-pro, sans-serif;
 	background-color: #000;
-	color: #fff;
+	color: #d3ff82;
 	font-size: 18pt;
 	font-weight: 300;
 	/*overflow: hidden;*/
@@ -18,6 +19,8 @@ body, html {
 	overflow-x:hidden;
 	overflow-y:hidden;
 	position: fixed;
+	width: 600px;
+	height: 1024px;
 }
 html {
 	/* height: 300px; */
@@ -108,6 +111,8 @@ div#infoPanel {
 	width: 600px;
 	height: 325px;
 	overflow: hidden;
+	position: absolute;
+    top: 150px;
 }
 div#news {
 	position: absolute;
