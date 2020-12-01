@@ -51,7 +51,7 @@ angular.module('gui.fritzspeed', []).controller('FritzSpeedCtrl', function Fritz
         
         $http({
 			method : 'GET',
-			url : 'http://orangepizeroplus/fritzbox/getCurrentSpeeds.php',
+			url : 'http://192.168.178.63/fritzbox/getCurrentSpeeds.php',
 		}).then(function successCallback(response) {
             // console.log('FritzSpeed',response);
             var d = response.data[0];

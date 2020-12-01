@@ -13,26 +13,30 @@ angular.module('gui.lights', []).controller('LightsCtrl', function LightsCtrl($s
 };
 
     $scope.decke = angular.copy($scope.lampTemplate);
-    $scope.decke.lightIds = [3,5,7];
+    $scope.decke.lightIds = [18];
     $scope.decke.title = 'Deckenlampe';
-    
+
     $scope.fernseh = angular.copy($scope.lampTemplate);
     $scope.fernseh.lightIds = [1,2];
     $scope.fernseh.title = 'Fernsehlampe';
-    
+
     $scope.ambiente = angular.copy($scope.lampTemplate);
     $scope.ambiente.lightIds = [9];
     $scope.ambiente.title = 'Ambiente';
 
-    $scope.go = angular.copy($scope.lampTemplate);
-    $scope.go.lightIds = [4];
-    $scope.go.title = 'GO';
+    $scope.blume = angular.copy($scope.lampTemplate);
+    $scope.blume.lightIds = [13,14,15,16];
+    $scope.blume.title = 'Blumen';
 
-    $scope.ck = angular.copy($scope.lampTemplate);
-    $scope.ck.lightIds = [8];
-    $scope.ck.title = 'Christophs Lampe';
+    // $scope.go = angular.copy($scope.lampTemplate);
+    // $scope.go.lightIds = [4];
+    // $scope.go.title = 'GO';
 
-    $scope.lights = [$scope.decke, $scope.fernseh, $scope.ambiente, $scope.go, $scope.ck];
+    // $scope.ck = angular.copy($scope.lampTemplate);
+    // $scope.ck.lightIds = [8];
+    // $scope.ck.title = 'Christophs Lampe';
+
+    $scope.lights = [$scope.decke, $scope.fernseh, $scope.ambiente, $scope.blume];
     $scope.timer = null;
     $scope.timeout = 4000;
     $scope.enabled = true;

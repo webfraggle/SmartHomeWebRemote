@@ -33,7 +33,7 @@ angular.module('gui.fritz', []).controller('FritzCtrl', function FritzCtrl($scop
         // console.log('refresh Fritz');
         //DataSource.get('http://fritz.box/login_sid.lua?sid='+$scope.sid,setData,xmlTransform);
         // $scope.imageSrc = 'http://raspberrypi2/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
-        $scope.imageSrc = 'http://orangepizeroplus/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
+        $scope.imageSrc = 'http://192.168.178.63/fritzbox/getCurrentSpeedsCircleSVG.php?v='+Math.random();
     }
 
     $interval($scope.refresh, 5000);
