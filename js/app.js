@@ -120,7 +120,8 @@ var myApp = angular.module('huedisplay', [
 	$scope.auto = true;
 
 	//$scope.state = 'overview';
-	$scope.bodyStyle = {'transform':'scale(1.11)'};
+	// $scope.bodyStyle = {'transform':'scale(1.11)'};
+	// $scope.bodyStyle = {'transform':'scale('+(1280/800)+')'};
 
 	$scope.resize = function()
 	{

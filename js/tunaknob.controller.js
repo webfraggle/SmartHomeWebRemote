@@ -55,8 +55,8 @@ angular.module('gui.tunaknob', []).controller('TunaKnobCtrl', function TunaKnobC
         if (!event.targetTouches.length) return;
         touch = event.targetTouches[0];
         // console.log(touch);
-        $scope.posX = touch.clientX*0.89 - touch.target.offsetLeft;
-        $scope.posY = touch.clientY*0.89 - touch.target.offsetTop;
+        $scope.posX = touch.clientX - touch.target.offsetLeft;
+        $scope.posY = touch.clientY - touch.target.offsetTop;
 
 
         $scope.angle = Math.atan2($scope.posY - $scope.centerPointY, $scope.posX - $scope.centerPointX)  / Math.PI;
